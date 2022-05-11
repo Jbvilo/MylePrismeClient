@@ -23,5 +23,5 @@ export class DemandesService {
   test(){
     return this.http.get("https://myleprismews.herokuapp.com/try", {responseType: 'text'}); 
   }
-
+  
 }
