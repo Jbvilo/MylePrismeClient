@@ -1,0 +1,149 @@
+<h2 style="margin:2vw"> Demandes &nbsp;{{dataSource.length}} </h2><!---->
+<div *ngIf="dataSource"> 
+<dx-data-grid 
+  (onRowClick)="openInfo($event)"
+  class="dx-card wide-card"
+  style="margin: 2vw;" 
+  [dataSource]="dataSource"
+  [columns]="['ID','NOM',
+  'PRENOM' ,
+  'TELEPHONE' ,
+  'EMAIL','DATE_ARRIVEE','ETAT']"
+  id="datagrid"
+  #datagrid
+>
+
+</dx-data-grid>
+</div>
+
+<dx-popup
+[width]="900"
+[height]="500"
+[showTitle]="true"
+titleTemplate="title"
+[dragEnabled]="false"
+[closeOnOutsideClick]="true"
+[showCloseButton]="true"
+[(visible)]="popupVisible"
+>
+<div *dxTemplate="let data of 'title'">
+<div style="margin-top:1vw;margin-bottom: 1vw;display: flex;justify-content: space-between;"> 
+  <div style="font-size: 150%;display: inline-block;"> Demande n° {{popupTitle}}</div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div *ngIf="!traitee"  style="color:red;font-size:110%;display: inline-block;font-weight: 500;" class="etat" (click)="validate()"> {{demandeInfos.ETAT}}</div>
+  <div *ngIf="traitee" style="color:green;font-size:110%;display: inline-block;font-weight: 500;"> TRAITEE </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <div style="font-size:130%;display: inline-block;"> {{demandeInfos.DATE_ARRIVEE}}</div>
+  <div style="display: inline-block;" class="close" (click)="closepopup()">
+    <i class="dx-icon-remove" style="font-size:150%"></i></div>
+</div>
+</div>
+
+<dx-scroll-view width="100%" height="100%">
+<div *ngIf="demandeInfos">
+  <div class="dx-card" style="padding: 1vw;margin:1vw">
+      <span style="font-size: 130%;font-weight: 400;"> IDENTITE</span> <br><br>
+<span style="font-weight: 500;">Nom : </span> {{demandeInfos.NOM}}  <br>
+<span style="font-weight: 500;">Prénom : </span> {{demandeInfos.PRENOM}}  <br>
+<span style="font-weight: 500;">Date de naissance : </span> {{demandeInfos.DATE_DE_NAISSANCE}}  <br><br>
+</div>
+
+
+<div class="dx-card" style="padding: 1vw;margin:1vw">
+<span style="font-size: 130%;font-weight: 400;"> COORDONNEES</span> <br><br>
+<span style="font-weight: 500;">Téléphone : </span> {{demandeInfos.TELEPHONE}}  <br>
+<span style="font-weight: 500;">Email : </span> {{demandeInfos.EMAIL}}  <br>
+<span style="font-weight: 500;">Adresse : </span> {{demandeInfos.ADRESSE}} <br><br>
+</div>
+
+
+<div class="dx-card" style="padding: 1vw;margin:1vw">
+<span style="font-size: 130%;font-weight: 400;"> FOYER</span> <br><br>
+<span style="font-weight: 500;">Habite dans logement à rénover : </span> {{demandeInfos.HABITE_DANS_LOGEMENT}}<br>
+<span style="font-weight: 500;">Habite seul : </span> {{demandeInfos.HABITE_SEUL}}  <br>
+<span style="font-weight: 500;">Avec conjoint : </span> {{demandeInfos.AVEC_CONJOINT}}  <br>
+<span style="font-weight: 500;">Adultes à charge : </span> {{demandeInfos.ADULTES_A_CHARGE}}
+<br>
+<span style="font-weight: 500;">Mineurs à charge : </span> {{demandeInfos.MINEURS_A_CHARGE}}
+<br>
+<span style="font-weight: 500;">Status : </span> {{demandeInfos.STATUS}}
+</div>  
+
+
+<div class="dx-card" style="padding: 1vw;margin:1vw">
+  <span style="font-size: 130%;font-weight: 400;"> SITUATION FISCAL</span> <br><br>
+  <span style="font-weight: 500;">Revenu fiscal : </span> {{demandeInfos.REVENU_FISCAL}}<br>
+  <span style="font-weight: 500;">Nombre de part : </span> {{demandeInfos.PART}}<br>
+
+  </div>  
+
+  <div class="dx-card" style="padding: 1vw;margin:1vw">
+    <span style="font-size: 130%;font-weight: 400;"> REVENUS </span> <br><br>
+    <span style="font-weight: 500;">Salaire : </span> {{demandeInfos.SALAIRE}}<br>
+    <span style="font-weight: 500;">Employeur: </span> {{demandeInfos.EMPLOYEUR}}<br>
+    <span style="font-weight: 500;">Chommage: </span> {{demandeInfos.CHOMMAGE}}<br>
+    <span style="font-weight: 500;">Retraite: </span> {{demandeInfos.RETRAITE}}<br>
+    <span style="font-weight: 500;">Organisme retraite: </span> {{demandeInfos.ORGANISME_RETRAITE}}<br>
+    <span style="font-weight: 500;">Retraite complémentaire: </span> {{demandeInfos.RETRAITE_COMPLEMENTAIRE}}<br>
+    <span style="font-weight: 500;">Organisme retraite complémentaire: </span> {{demandeInfos.ORGANISME_RETRAITE_COMPLEMENTAIRE}}<br>
+    <span style="font-weight: 500;">Pension: </span> {{demandeInfos.PENSION}}<br>
+    <span style="font-weight: 500;">Organise pension: </span> {{demandeInfos.ORGANISME_PENSION}}<br>
+    <span style="font-weight: 500;">Aah: </span> {{demandeInfos.ALLOCATION_AAH}}<br>
+    <span style="font-weight: 500;">Autre rémunération: </span> {{demandeInfos.AUTRE_REMUNERATION}}<br>
+    <span style="font-weight: 500;">Nom autre rémuneration: </span> {{demandeInfos.NOM_AUTRE_REMUNERATION}}<br>
+
+    </div>  
+
+    <div class="dx-card" style="padding: 1vw;margin:1vw">
+      <span style="font-size: 130%;font-weight: 400;">PROJET </span> <br><br>
+      <span style="font-weight: 500;">Travaux à faire : </span> {{demandeInfos.TRAVAUX_A_FAIRE}}<br>
+      <span style="font-weight: 500;">Description projet : </span> {{demandeInfos.DESCRIPTION_PROJET}}<br>
+      <span style="font-weight: 500;">Après travaux : </span> {{demandeInfos.APRES_TRAVAUX}}<br>
+      <span style="font-weight: 500;">Aides travaux antérieurs: </span> {{demandeInfos.AIDES_TRAVAUX_ANTERIEURS}}<br>
+      <span style="font-weight: 500;">Organisme d'aide : </span> {{demandeInfos.ORGANISME_AIDE}}<br>
+      <span style="font-weight: 500;">Année aide : </span> {{demandeInfos.ANNEE_AIDE}}<br>
+      <span style="font-weight: 500;">Montant aide : </span> {{demandeInfos.MONTANT_AIDE}}<br>
+      <span style="font-weight: 500;">Commentaire : </span> {{demandeInfos.COMMENTAIRE}}<br>
+    
+      </div>  
+
+
+
+</div>
+</dx-scroll-view>
+</dx-popup>
+<!--  [columns]="['ID','NOM',
+  'PRENOM' ,
+  'DATE_DE_NAISSANCE' ,
+  'TELEPHONE' ,
+  'EMAIL' ,
+  'ADRESSE' ,
+  'HABITE_SEUL' ,
+  'AVEC_CONJOINT' ,
+  'ADULTES_A_CHARGE' ,
+  'MINEURS_A_CHARGE' ,
+  'STATUS' ,
+  'HABITE_DANS_LOGEMENT' ,
+  'REVENU_FISCAL' ,
+  'PART' ,
+  'SALAIRE' ,
+  'EMPLOYEUR' ,
+  'CHOMMAGE' ,
+  'RETRAITE' ,
+  'ORGANISME_RETRAITE' ,
+  'RETRAITE_COMPLEMENTAIRE' ,
+  'ORGANISME_RETRAITE_COMPLEMENTAIRE' ,
+  'PENSION' ,
+  'ORGANISME_PENSION' ,
+  'RSA' ,
+  'ALLOCATION_AAH' ,
+  'AUTRE_REMUNERATION'  ,
+  'NOM_AUTRE_REMUNERATION' ,
+  'TRAVAUX_A_FAIRE' ,
+  'DESCRIPTION_PROJET' ,
+  'APRES_TRAVAUX' ,
+  'AIDES_TRAVAUX_ANTERIEURS' ,
+  'ORGANISME_AIDE' ,
+  'ANNEE_AIDE' ,
+  'MONTANT_AIDE' ,
+  'COMMENTAIRE' ]"-->
