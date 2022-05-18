@@ -21,7 +21,7 @@ export class DemandesService {
     return this.http.put<any>("http://localhost:3000/openDemande/"+id,{});
   }
   test(){
-    return this.http.get("https://myleprismews.herokuapp.com/try", {responseType: 'text'}); 
+    return this.http.get("https://myleprismews.herokuapp.com/all", {responseType: 'text'}); 
   }
   
 }
