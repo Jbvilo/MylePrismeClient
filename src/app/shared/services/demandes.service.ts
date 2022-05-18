@@ -18,7 +18,7 @@ export class DemandesService {
     return this.http.put<any>("https://myleprismews.herokuapp.com/updateDemande/"+id,{});
   }
   openDemandeById(id:number) {
-    return this.http.put<any>("https://myleprismews.herokuapp.com//openDemande/"+id,{});
+    return this.http.put<any>("https://myleprismews.herokuapp.com/openDemande/"+id,{});
   }
   test(){
     return this.http.get("https://myleprismews.herokuapp.com/all", {responseType: 'text'}); 
