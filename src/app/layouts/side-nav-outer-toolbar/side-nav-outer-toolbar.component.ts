@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, NgModule, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { SideNavigationMenuModule, HeaderModule } from '../../shared/components';
 import { ScreenService } from '../../shared/services';
 import { ItemClickEvent } from 'devextreme/ui/tree_view';
@@ -28,14 +28,20 @@ export class SideNavOuterToolbarComponent implements OnInit {
   minMenuSize = 0;
   shaderEnabled = false;
 
-  constructor(private screen: ScreenService, private router: Router) { }
+  constructor(private screen: ScreenService, private router: Router) {
+    setTimeout(() => {
+      this.selectedRoute = this.router.url
+    }, 100);
+   }
 
   ngOnInit() {
     this.menuOpened = this.screen.sizes['screen-large'];
 
+
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.selectedRoute = val.urlAfterRedirects.split('?')[0];
+        console.log(this.selectedRoute)
       }
     });
 
