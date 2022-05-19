@@ -1,4 +1,4 @@
-<h2 style="margin:2vw"> Demandes &nbsp;{{dataSource.length}} </h2><!---->
+<h2 style="margin:2vw"> Demandes &nbsp;  <span *ngIf="dataSource">{{dataSource.length}} </span> </h2><!---->
 <div *ngIf="dataSource"> 
 <dx-data-grid 
   (onRowClick)="openInfo($event)"

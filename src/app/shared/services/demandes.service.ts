@@ -21,8 +21,5 @@ export class DemandesService {
   openDemandeById(id:number) {
     return this.http.put<any>("https://myleprismews.herokuapp.com/openDemande/"+id,{});
   }
-  test(){
-    return this.http.get("https://myleprismews.herokuapp.com/all", {responseType: 'text'}); 
-  }
   
 }

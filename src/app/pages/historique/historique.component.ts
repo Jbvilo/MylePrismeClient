@@ -9,7 +9,7 @@ import { DemandesService } from 'src/app/shared/services/demandes.service';
 })
 export class HistoriqueComponent implements OnInit {
 
-  dataSource: any=[];
+  dataSource!: any[];
   popupVisible!:boolean;
   demandeInfos:any;
   popupTitle!:string;
@@ -30,7 +30,7 @@ export class HistoriqueComponent implements OnInit {
       }
       getDemandes(){
         this.demandesServices.getDemandes().subscribe(res => {
-          console.log(res)
+  
       this.dataSource=res.filter(e=>e.ETAT != "A TRAITER").sort((a,b)=>b.ID-a.ID);
         
       })
@@ -49,7 +49,6 @@ export class HistoriqueComponent implements OnInit {
   }
   validate(){
 this.demandesServices.openDemandeById(this.demandeInfos.ID).subscribe(res=>{
-  console.log(res)
   this.traitee=true;
   this.getDemandes()
   setTimeout(() => {

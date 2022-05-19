@@ -11,7 +11,7 @@ import { DemandesService } from 'src/app/shared/services/demandes.service';
 })
 
 export class TasksComponent implements OnInit {
-  dataSource: any=[];
+  dataSource!: any[];
   popupVisible!:boolean;
   demandeInfos:any;
   popupTitle!:string;
@@ -31,13 +31,9 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
 this.getDemandes()
-this.demandesServices.test().subscribe(res=>{
-  console.log(res)
-})
   }
   getDemandes(){
     this.demandesServices.getDemandes().subscribe(res => {
-   //   console.log(res)
   this.dataSource=res.filter(e=>e.ETAT == "A TRAITER").sort((a,b)=>b.ID-a.ID);
     
   })
@@ -54,9 +50,8 @@ this.demandesServices.test().subscribe(res=>{
     this.popupVisible=false;
   }
   validate(){
-console.log(this.datagrid)
 this.demandesServices.closeDemandeById(this.demandeInfos.ID).subscribe(res=>{
-  console.log(res)
+
   this.traitee=true;
   this.getDemandes()
   setTimeout(() => {

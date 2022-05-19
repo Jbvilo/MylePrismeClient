@@ -1,4 +1,4 @@
-<h2 style="margin:2vw"> Historique  &nbsp;{{dataSource.length}} </h2><!---->
+<h2 style="margin:2vw"> Historique  &nbsp;<span *ngIf="dataSource">{{dataSource.length}} </span> </h2><!---->
 <div *ngIf="dataSource"> 
 <dx-data-grid 
   (onRowClick)="openInfo($event)"
