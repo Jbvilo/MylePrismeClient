@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 
@@ -14,9 +15,10 @@ const defaultUser = {
 
 @Injectable()
 export class AuthService {
-  private _user: IUser | null = defaultUser;
+  private _user!: IUser | null ;
+  private islogged!:boolean;
   get loggedIn(): boolean {
-    return !!this._user;
+    return this.islogged;
   }
 
   private _lastAuthenticatedPath: string = defaultPath;
@@ -24,7 +26,7 @@ export class AuthService {
     this._lastAuthenticatedPath = value;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private http:HttpClient) { }
 
   async logIn(email: string, password: string) {
 
@@ -34,10 +36,18 @@ export class AuthService {
       this._user = { ...defaultUser, email };
       this.router.navigate([this._lastAuthenticatedPath]);
 
+      if(email == "admin@admin.com" && password =="admin"){
+        this.islogged=true
+        return {
+          isOk: true,
+          data: this._user
+        };
+      }
       return {
-        isOk: true,
+        isOk: false,
         data: this._user
-      };
+      }
+
     }
     catch {
       return {
@@ -118,6 +128,7 @@ export class AuthService {
 
   async logOut() {
     this._user = null;
+    this.islogged=false;
     this.router.navigate(['/login-form']);
   }
 }
