@@ -5,10 +5,7 @@
   class="dx-card wide-card"
   style="margin: 2vw;" 
   [dataSource]="dataSource"
-  [columns]="['ID','NOM',
-  'PRENOM' ,
-  'TELEPHONE' ,
-  'EMAIL','DATE_ARRIVEE','ETAT']"
+  [columns]="columns"
   id="datagrid"
   #datagrid
 >
@@ -17,8 +14,8 @@
 </div>
 
 <dx-popup
-[width]="900"
-[height]="500"
+[width]="popup.width"
+[height]="popup.height"
 [showTitle]="true"
 titleTemplate="title"
 [dragEnabled]="false"

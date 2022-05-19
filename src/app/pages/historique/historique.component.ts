@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScreenService } from 'src/app/shared/services';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
 
 @Component({
@@ -13,8 +14,16 @@ export class HistoriqueComponent implements OnInit {
   demandeInfos:any;
   popupTitle!:string;
   traitee=false;
-  constructor(private demandesServices: DemandesService) {
+  columns=['ID','NOM','PRENOM','TELEPHONE', 'EMAIL','DATE_ARRIVEE','ETAT'];
+  popup = {height:500,width:900}
+  mobileScreen!:boolean;
 
+  constructor(private demandesServices: DemandesService,private screenService:ScreenService) {
+    this.mobileScreen = this.screenService.sizes['screen-x-small']
+    if(this.mobileScreen){
+      this.columns = ['ID','NOM','PRENOM','DATE_ARRIVEE']
+      this.popup = {height:600,width:380}
+    }
   }
   ngOnInit(): void {
     this.getDemandes()

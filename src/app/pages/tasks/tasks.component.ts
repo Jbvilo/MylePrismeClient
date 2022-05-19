@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import 'devextreme/data/odata/store';
 import dxDataGrid from 'devextreme/ui/data_grid';
+import { ScreenService } from 'src/app/shared/services';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
 
 @Component({
@@ -15,9 +16,17 @@ export class TasksComponent implements OnInit {
   demandeInfos:any;
   popupTitle!:string;
   traitee=false;
-  @ViewChild(DxDataGridComponent) datagrid! :DxDataGridComponent;
-  constructor(private demandesServices: DemandesService) {
+  columns=['ID','NOM','PRENOM','TELEPHONE', 'EMAIL','DATE_ARRIVEE','ETAT'];
+  popup = {height:500,width:900}
+  mobileScreen!:boolean;
 
+  @ViewChild(DxDataGridComponent) datagrid! :DxDataGridComponent;
+  constructor(private demandesServices: DemandesService, private screenService:ScreenService) {
+   this.mobileScreen = this.screenService.sizes['screen-x-small']
+   if(this.mobileScreen){
+     this.columns = ['ID','NOM','PRENOM','DATE_ARRIVEE']
+     this.popup = {height:600,width:380}
+   }
   }
 
   ngOnInit(): void {
