@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { Session } from 'inspector';
 
 export interface IUser {
-  email: string;
+  email: string | null;
   avatarUrl?: string
 }
 
@@ -26,7 +27,17 @@ export class AuthService {
     this._lastAuthenticatedPath = value;
   }
 
-  constructor(private router: Router,private http:HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    if (sessionStorage.getItem("MLPIdent")) {
+      this.islogged = true;
+      let email =   sessionStorage.getItem("MLPIdent");
+  
+      this._user = { ...defaultUser, email };
+    }
+    else {
+      this.islogged = false;
+    }
+  }
 
   async logIn(email: string, password: string) {
 
@@ -35,8 +46,9 @@ export class AuthService {
       this._user = { ...defaultUser, email };
       this.router.navigate([this._lastAuthenticatedPath]);
 
-      if(email == "admin@admin.com" && password =="admin"){
+      if(email == "admin@admin.com" && password =="leprisme"){
         this.islogged=true
+        sessionStorage.setItem("MLPIdent",email);
         return {
           isOk: true,
           data: this._user
@@ -127,6 +139,7 @@ export class AuthService {
   async logOut() {
     this._user = null;
     this.islogged=false;
+    sessionStorage.removeItem("MLPIdent")
     this.router.navigate(['/login-form']);
   }
 }
