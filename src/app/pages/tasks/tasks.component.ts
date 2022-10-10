@@ -4,6 +4,7 @@ import 'devextreme/data/odata/store';
 import dxDataGrid from 'devextreme/ui/data_grid';
 import { ScreenService } from 'src/app/shared/services';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
+import { ExcellService } from 'src/app/shared/services/excell.service';
 
 @Component({
   templateUrl: 'tasks.component.html',
@@ -21,7 +22,7 @@ export class TasksComponent implements OnInit {
   mobileScreen!:boolean;
 
   @ViewChild(DxDataGridComponent) datagrid! :DxDataGridComponent;
-  constructor(private demandesServices: DemandesService, private screenService:ScreenService) {
+  constructor(private demandesServices: DemandesService, private screenService:ScreenService,private excelService:ExcellService) {
    this.mobileScreen = this.screenService.sizes['screen-x-small']
    if(this.mobileScreen){
      this.columns = ['ID','NOM','PRENOM','DATE_ARRIVEE']
@@ -31,6 +32,10 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
 this.getDemandes()
+  }
+
+  savefile(){
+    this.excelService.savefile(this.demandeInfos)
   }
   getDemandes(){
     this.demandesServices.getDemandes().subscribe(res => {

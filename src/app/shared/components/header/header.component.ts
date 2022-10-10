@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
   userMenuItems = [
   {
-    text: 'Logout',
+    text: 'Se déconnecter',
     icon: 'runner',
     onClick: () => {
       this.authService.logOut();
