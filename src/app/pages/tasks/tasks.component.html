@@ -2,7 +2,7 @@
 <!---->
 <div *ngIf="dataSource">
   <dx-data-grid (onRowClick)="openInfo($event)" class="dx-card wide-card" style="margin-left:10px;margin-right:10px" [dataSource]="dataSource"
-    [columns]="columns" id="datagrid" #datagrid>
+    [columns]="columns" id="datagrid"   [hoverStateEnabled]="true" #datagrid>
 
   </dx-data-grid>
 </div>

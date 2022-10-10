@@ -98,7 +98,7 @@ export class ExcellService {
 
 
     worksheet.properties.defaultRowHeight = 15;
-    worksheet.properties.defaultColWidth = 30;
+    worksheet.properties.defaultColWidth = 60;
     let i = 0;
 header.forEach(element=>{
   worksheet.addRow([element,values[i]])
