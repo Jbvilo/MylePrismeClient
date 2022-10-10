@@ -5,10 +5,11 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxDataGridModule, DxFormModule, DxPopupModule,DxScrollViewModule } from 'devextreme-angular';
+import { DxDataGridModule, DxFormModule, DxPopupModule,DxScrollViewModule,DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
 import { CommonModule } from '@angular/common';
 import { HistoriqueComponent } from './pages/historique/historique.component';
 import { DxButtonModule } from 'devextreme-angular';
+import { PlanningComponent } from './pages/planning/planning.component';
 const routes: Routes = [
   {
     path: 'tasks',
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'historique',
     component: HistoriqueComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'planning',
+    component: PlanningComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -57,14 +63,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,CommonModule,DxPopupModule,DxScrollViewModule,DxButtonModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,CommonModule,DxPopupModule,DxScrollViewModule,DxButtonModule,DxSchedulerModule, DxTemplateModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
     HomeComponent,
     ProfileComponent,
     TasksComponent,
-    HistoriqueComponent
+    HistoriqueComponent,
+    PlanningComponent
   ]
 })
 export class AppRoutingModule { }

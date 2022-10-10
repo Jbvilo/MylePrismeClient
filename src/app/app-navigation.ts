@@ -5,11 +5,6 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Messages',
-    icon: 'message',
-    path: '/profile' 
-  },
-  {
     text: 'Demandes',
     icon: 'folder',
     path: '/tasks'
@@ -18,11 +13,15 @@ export const navigation = [
     text: 'Historique',
     icon: 'refresh',
     path: '/historique'
-  }
-  ,
+  },
   {
     text: 'Planning',
     icon: 'event',
-    path: '/'
+    path: '/planning'
+  },
+  {
+    text: 'Messages',
+    icon: 'message',
+    path: '/profile' 
   }
 ];

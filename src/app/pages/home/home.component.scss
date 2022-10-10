@@ -32,3 +32,18 @@
     }
   }
 }
+ :host {
+  .dx-card {
+    width: 23%;
+    text-align: start;
+    padding: 5px;
+    border-radius: 1px;
+    font-size: 110%;
+  }
+  .number {
+    text-align: center;
+    font-size: 400%;
+  }
+
+ }
+
