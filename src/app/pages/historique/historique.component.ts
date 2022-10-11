@@ -17,6 +17,7 @@ export class HistoriqueComponent implements OnInit {
   columns=['ID','NOM','PRENOM','TELEPHONE', 'EMAIL','DATE_ARRIVEE','ETAT'];
   popup = {height:500,width:900}
   mobileScreen!:boolean;
+  searchText= "";
 
   constructor(private demandesServices: DemandesService,private screenService:ScreenService) {
     this.mobileScreen = this.screenService.sizes['screen-x-small']
@@ -37,6 +38,11 @@ export class HistoriqueComponent implements OnInit {
     
       }
 
+
+      filterdatagrid(event:any) {  
+        this.searchText = event.value
+        }
+        
   openInfo(e:any){
     this.traitee=false;
     this.demandeInfos=e.data;

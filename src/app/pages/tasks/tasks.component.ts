@@ -20,6 +20,7 @@ export class TasksComponent implements OnInit {
   columns=['ID','NOM','PRENOM','TELEPHONE', 'EMAIL','DATE_ARRIVEE','ETAT'];
   popup = {height:500,width:900}
   mobileScreen!:boolean;
+  searchText="";
 
   @ViewChild(DxDataGridComponent) datagrid! :DxDataGridComponent;
   constructor(private demandesServices: DemandesService, private screenService:ScreenService,private excelService:ExcellService) {
@@ -53,6 +54,10 @@ this.getDemandes()
   }
   closepopup(){
     this.popupVisible=false;
+  }
+
+  filterdatagrid(event:any) {  
+  this.searchText = event.value
   }
   validate(){
 this.demandesServices.closeDemandeById(this.demandeInfos.ID).subscribe(res=>{
