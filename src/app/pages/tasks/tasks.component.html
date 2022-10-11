@@ -50,24 +50,25 @@
 
   <dx-scroll-view width="100%" height="100%">
     <div *ngIf="demandeInfos">
+      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> IDENTITE</span> <br>
       <div class="dx-card" style="padding: 1vw;margin:1vw;">
-        <span style="font-size: 130%;font-weight: 400;"> IDENTITE</span> <br><br>
+    
         <span style="font-weight: 500;">Nom : </span> {{demandeInfos.NOM}} <br>
         <span style="font-weight: 500;">Prénom : </span> {{demandeInfos.PRENOM}} <br>
         <span style="font-weight: 500;">Date de naissance : </span> {{demandeInfos.DATE_DE_NAISSANCE}} <br><br>
       </div>
+      <br>
 
-
-      <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-size: 130%;font-weight: 400;"> COORDONNEES</span> <br><br>
+      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> COORDONNEES</span> <br>
+      <div class="dx-card" style="padding: 1vw;margin:1vw">      
         <span style="font-weight: 500;">Téléphone : </span> {{demandeInfos.TELEPHONE}} <br>
         <span style="font-weight: 500;">Email : </span> {{demandeInfos.EMAIL}} <br>
         <span style="font-weight: 500;">Adresse : </span> {{demandeInfos.ADRESSE}} <br><br>
       </div>
 
-
+      <br>
+      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> FOYER</span> <br>
       <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-size: 130%;font-weight: 400;"> FOYER</span> <br><br>
         <span style="font-weight: 500;">Habite dans logement à rénover : </span>
         {{demandeInfos.HABITE_DANS_LOGEMENT}}<br>
         <span style="font-weight: 500;">Habite seul : </span> {{demandeInfos.HABITE_SEUL}} <br>
@@ -79,16 +80,16 @@
         <span style="font-weight: 500;">Status : </span> {{demandeInfos.STATUS}}
       </div>
 
-
+      <br>
+      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> SITUATION FISCAL</span> <br>
       <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-size: 130%;font-weight: 400;"> SITUATION FISCAL</span> <br><br>
         <span style="font-weight: 500;">Revenu fiscal : </span> {{demandeInfos.REVENU_FISCAL}}<br>
         <span style="font-weight: 500;">Nombre de part : </span> {{demandeInfos.PART}}<br>
 
       </div>
-
+      <br>
+      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> REVENUS</span> <br>
       <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-size: 130%;font-weight: 400;"> REVENUS </span> <br><br>
         <span style="font-weight: 500;">Salaire : </span> {{demandeInfos.SALAIRE}}<br>
         <span style="font-weight: 500;">Employeur: </span> {{demandeInfos.EMPLOYEUR}}<br>
         <span style="font-weight: 500;">Chommage: </span> {{demandeInfos.CHOMMAGE}}<br>
@@ -104,9 +105,9 @@
         <span style="font-weight: 500;">Nom autre rémuneration: </span> {{demandeInfos.NOM_AUTRE_REMUNERATION}}<br>
 
       </div>
-
+      <br>
+      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> PROJET</span> <br>
       <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-size: 130%;font-weight: 400;">PROJET </span> <br><br>
         <span style="font-weight: 500;">Travaux à faire : </span> {{demandeInfos.TRAVAUX_A_FAIRE}}<br>
         <span style="font-weight: 500;">Description projet : </span> {{demandeInfos.DESCRIPTION_PROJET}}<br>
         <span style="font-weight: 500;">Après travaux : </span> {{demandeInfos.APRES_TRAVAUX}}<br>
