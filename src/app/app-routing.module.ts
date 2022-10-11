@@ -5,7 +5,7 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxDataGridModule, DxFormModule, DxPopupModule,DxScrollViewModule,DxSchedulerModule, DxTemplateModule,DxTextBoxModule } from 'devextreme-angular';
+import { DxDataGridModule, DxFormModule, DxPopupModule,DxScrollViewModule,DxSchedulerModule, DxTemplateModule,DxTextBoxModule,DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
 import { CommonModule } from '@angular/common';
 import { HistoriqueComponent } from './pages/historique/historique.component';
 import { DxButtonModule } from 'devextreme-angular';
@@ -64,7 +64,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,CommonModule,DxPopupModule,DxScrollViewModule,DxButtonModule,DxSchedulerModule, DxTemplateModule,DxTextBoxModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,CommonModule,DxPopupModule,DxScrollViewModule,DxButtonModule,DxSchedulerModule,DxChartModule, DxTemplateModule,DxTextBoxModule, DxSelectBoxModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
