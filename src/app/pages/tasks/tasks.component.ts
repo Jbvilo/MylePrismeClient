@@ -23,6 +23,8 @@ export class TasksComponent implements OnInit {
   searchText="";
 
   @ViewChild(DxDataGridComponent) datagrid! :DxDataGridComponent;
+  total!: number | null;
+
   constructor(private demandesServices: DemandesService, private screenService:ScreenService,private excelService:ExcellService) {
    this.mobileScreen = this.screenService.sizes['screen-x-small']
    if(this.mobileScreen){
@@ -33,6 +35,7 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
 this.getDemandes()
+
   }
 
   savefile(){
@@ -41,7 +44,7 @@ this.getDemandes()
   getDemandes(){
     this.demandesServices.getDemandes().subscribe(res => {
   this.dataSource=res.filter(e=>e.ETAT == "A TRAITER").sort((a,b)=>b.ID-a.ID);
-    
+    this.total=this.dataSource.length
   })
 
   }
@@ -58,6 +61,9 @@ this.getDemandes()
 
   filterdatagrid(event:any) {  
   this.searchText = event.value
+  setTimeout(() => {
+    this.total = this.datagrid.instance.totalCount()
+  }, 150);
   }
   validate(){
 this.demandesServices.closeDemandeById(this.demandeInfos.ID).subscribe(res=>{
