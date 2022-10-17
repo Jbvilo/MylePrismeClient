@@ -40,7 +40,16 @@
       <i class="dx-icon-save"  style="font-size:25px;color:black;cursor: pointer;" ></i>
       <i class="dx-icon-email"  style="font-size:25px;color:black;cursor: pointer;" ></i>
       <i class="dx-icon-xlsfile" style="font-size:25px;color:green;cursor: pointer;" (click)="savefile()"></i>
-  
+   
+      
+      <label for="inputTag" id="labelinput">
+        <i class="dx-icon-photo"  style="font-size:25px;color:#FF5722;cursor: pointer;" ></i>
+      <input id="inputTag" type="file" text="oo" accept="image/*;capture=camera">
+     
+      </label>
+      <!-- <input type="file" accept="image/*" capture="capture">
+      <input type="file" accept="image/*" capture="camera"> -->
+
       <div style="font-size:130%;display: inline-block;"> {{demandeInfos.DATE_ARRIVEE}}</div>
       <div style="display: inline-block;" class="close" (click)="closepopup()">
         <i class="dx-icon-remove" style="font-size:150%"></i>
