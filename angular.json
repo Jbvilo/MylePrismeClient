@@ -76,9 +76,9 @@
                 }
               ],
               "optimization": {
-                "scripts": true,
+                "scripts": false,
                 "styles": {
-                  "minify": false,
+                  "minify": true,
                   "inlineCritical": true
                 },
                 "fonts": true

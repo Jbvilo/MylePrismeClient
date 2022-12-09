@@ -1,3 +1,8 @@
+
+<div *ngIf="!demande">
+    <app-loader></app-loader>
+</div>
+
 <div *ngIf="demande">
 
 
@@ -200,13 +205,11 @@
     </div>
 </div>
 
-<div *ngIf="!demande">
-    <app-loader></app-loader>
-</div>
 
 
 
-
+<div *ngIf="demande">
+    
 
 
 <dx-popup
@@ -246,3 +249,4 @@ valueChangeEvent="keyup"
  label=" ">
 </dx-text-area>
 </dx-popup>
+</div>
