@@ -17,7 +17,7 @@ export class SideNavOuterToolbarComponent implements OnInit {
   @ViewChild(DxScrollViewComponent, { static: true }) scrollView!: DxScrollViewComponent;
   selectedRoute = '';
 
-  menuOpened!: boolean;
+  menuOpened!: boolean
   temporaryMenuOpened = false;
 
   @Input()
@@ -35,7 +35,7 @@ export class SideNavOuterToolbarComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.menuOpened = this.screen.sizes['screen-large'];
+    this.menuOpened = false;
 
 
     this.router.events.subscribe(val => {
