@@ -82,6 +82,7 @@ const routes: Routes = [
     TasksComponent,
     HistoriqueComponent,
     PlanningComponent,
+    LoaderComponent,
     LoaderBisComponent,
     DemandeComponent,
     InfosTextBoxComponent

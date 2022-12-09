@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from './layouts';
 import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangePasswordFormModule, LoginFormModule } from './shared/components';
@@ -10,12 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DxLoadIndicatorModule } from 'devextreme-angular';
-import { LoaderComponent } from './shared/components/loader/loader.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
