@@ -1,12 +1,7 @@
-.etat {
-cursor: pointer;
-}
-.close {
-    cursor: pointer;
-}
-#inputTag {
-    display: none;
-}
-#labelinput {
-    cursor: pointer;
+:host {
+    .data-grid {
+        .dx-card {
+            padding: 0px;
+        }
+    }
 }

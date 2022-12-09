@@ -1,7 +1,7 @@
-.etat {
-    cursor: pointer;
+:host {
+    .data-grid {
+        .dx-card {
+            padding: 0px;
+        }
     }
-    
-    .close {
-        cursor: pointer;
-    }
+}

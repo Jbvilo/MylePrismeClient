@@ -1,0 +1,16 @@
+<div *ngIf="!modification">{{intitule}} : {{info}}</div>
+<div *ngIf="modification">
+<div class="intitule">{{intitule}} :</div>
+<div class="text-box">
+    <br>
+    <dx-text-box 
+    [value]="info" 
+    valueChangeEvent="keyup"
+     stylingMode="outlined" 
+     height="15px;"
+     width="900px"
+     class="text-box-input"
+     [label]="info">
+    </dx-text-box>
+</div>
+</div>

@@ -5,57 +5,66 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxDataGridModule, DxFormModule, DxPopupModule,DxScrollViewModule,DxSchedulerModule, DxTemplateModule,DxTextBoxModule,DxChartModule, DxSelectBoxModule } from 'devextreme-angular';
+import { DxDataGridModule, DxFormModule, DxPopupModule, DxScrollViewModule, DxSchedulerModule, DxTemplateModule, DxTextBoxModule, DxChartModule, DxSelectBoxModule, DxLoadIndicatorModule, DxTextAreaModule } from 'devextreme-angular';
 import { CommonModule } from '@angular/common';
 import { HistoriqueComponent } from './pages/historique/historique.component';
 import { DxButtonModule } from 'devextreme-angular';
 import { PlanningComponent } from './pages/planning/planning.component';
+import { DemandeComponent } from './pages/demande/demande.component';
+import { LoaderBisComponent } from './shared/components/loader-bis/loader-bis.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { InfosTextBoxComponent } from './shared/components/infos-text-box/infos-text-box.component';
 
 const routes: Routes = [
   {
     path: 'tasks',
     component: TasksComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'historique',
     component: HistoriqueComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'planning',
     component: PlanningComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'login-form',
     component: LoginFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'reset-password',
     component: ResetPasswordFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'create-account',
     component: CreateAccountFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
   },
   {
     path: 'change-password/:recoveryCode',
     component: ChangePasswordFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'demande',
+    component: DemandeComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: '**',
@@ -64,7 +73,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule,CommonModule,DxPopupModule,DxScrollViewModule,DxButtonModule,DxSchedulerModule,DxChartModule, DxTemplateModule,DxTextBoxModule, DxSelectBoxModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule, CommonModule, DxPopupModule, DxScrollViewModule, DxButtonModule, DxSchedulerModule, DxChartModule, DxTemplateModule, DxTextBoxModule, DxSelectBoxModule, DxLoadIndicatorModule, DxPopupModule,DxTextAreaModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
@@ -72,7 +81,10 @@ const routes: Routes = [
     ProfileComponent,
     TasksComponent,
     HistoriqueComponent,
-    PlanningComponent
+    PlanningComponent,
+    LoaderBisComponent,
+    DemandeComponent,
+    InfosTextBoxComponent
   ]
 })
 export class AppRoutingModule { }

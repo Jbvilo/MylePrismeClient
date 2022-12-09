@@ -1,9 +1,10 @@
 @import "../../../../themes/generated/variables.base.scss";
+@import "../../../../themes/generated/variables.additional.scss";
+
 
 .user-info {
   display: flex;
   align-items: center;
-
   :host-context(.dx-toolbar-menu-section) & {
     padding: 10px 6px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);

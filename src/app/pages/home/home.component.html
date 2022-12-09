@@ -1,114 +1,68 @@
-<div class="" style="text-align: center;margin: 10px;">
-  <h2
-    style="font-size: 300%;color:#53535b;font-weight: 700;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-    My LePrisme</h2>
-  <br>
-  <div style="display:flex; justify-content:space-between">
+<!--TITRE-->
+<h2 class="grey-title"> Accueil </h2>
 
-    <div class="dx-card">
-      <div class="cardtitle">Demandes à traiter</div>
+<!--CARDS-->
+<div class="cards-content">
+  <div class="dx-card">
+      <div class="card-title">Demandes en cours</div>
       <div class="number">{{nbrDemande}}</div>
-    </div>
-    <div class="dx-card">
-      <div class="cardtitle">Rendez-vous du jour</div>
-      <div class="number">0</div>
-    </div>
-    <div class="dx-card">
-      <div class="cardtitle">Messages non-lus  </div>
-      <div class="number">0</div>
-    </div>
-    <div class="dx-card">
-      <div class="cardtitle"> Visiteurs du jour </div>
-      <div class="number">4</div>
-    </div>
   </div>
+  <div class="dx-card">
+      <div class="card-title">Rendez-vous du jour</div>
+      <div class="number">*</div>
+  </div>
+  <div class="dx-card">
+      <div class="card-title">Messages non-lus </div>
+      <div class="number">*</div>
+  </div>
+  <div class="dx-card">
+      <div class="card-title"> Visiteurs du jour </div>
+      <div class="number">*</div>
+  </div>
+</div>
 
-
-<br>
-  <div style="display:flex; justify-content:space-between">
-
-    <div class="dx-card card2">
-      <div class="cardtitle">Demandes / semaine</div>
-    
-      
-
-
-
-      <div id="chart-demo">
-        <dx-chart palette="Violet" [dataSource]="countriesInfo">
-          <dxo-size
-          [height]="317">
-      </dxo-size>
+<!--GRAPHES-->
+<div class="graphes-content">
+  <!--Courbe-->
+  <div class="dx-card">
+    <div class="card-title"> Demandes / semaine</div>
+      <dx-chart [dataSource]="countriesInfo">
+          <dxo-common-series-settings
+            #seriesSettings
+            argumentField="country"
+            [type]="types[0]">
+          </dxo-common-series-settings>
+          <dxo-size [height]="300"></dxo-size>
           <dxi-series
             *ngFor="let energy of energySources"
             [valueField]="energy.value"
             [name]="energy.name"
-          >
+            color="#FF5720">
           </dxi-series>
-          <dxo-legend
-          [visible]=false
-        >
-        </dxo-legend>
-          <dxo-common-series-settings
-            #seriesSettings
-            argumentField="country"
-            [type]="types[0]"
-          >
-          </dxo-common-series-settings>
-          <dxo-margin [bottom]="20"></dxo-margin>
+          <dxo-legend [visible]=false></dxo-legend>
           <dxo-argument-axis
             [valueMarginsEnabled]="false"
-            discreteAxisDivisionMode="crossLabels"
-          >
-            <dxo-grid [visible]="true"></dxo-grid>
+            discreteAxisDivisionMode="crossLabels">
+              <dxo-grid [visible]="true"></dxo-grid>
           </dxo-argument-axis>
-       
-     
-          <dxo-export [enabled]="false"></dxo-export>
-          <dxo-tooltip [enabled]="true"></dxo-tooltip>
-        </dx-chart>
-  
-      </div>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-    <div class="dx-card card2">
-      <div class="cardtitle">Visteurs / semaine</div>
-      <dx-chart id="chart" [dataSource]="datasource">
-        <dxo-size
-        [height]="300">
-    </dxo-size>
-        <dxi-series
-          argumentField="day"
-          valueField="oranges"
-          name="My oranges"
-          type="bar"
-          color="#ffaa66"
-        >
-   
-        </dxi-series>
-        <dxo-legend
-        [visible]=false
-      >
-      </dxo-legend>
+        <dxo-export [enabled]="false"></dxo-export>
+        <dxo-tooltip [enabled]="true"></dxo-tooltip>
       </dx-chart>
+  </div>
 
-    </div>
-
+  <!--Histogramme-->
+  <div class="dx-card">
+    <div class="card-title">Visteurs / semaine</div>
+    <dx-chart [dataSource]="datasource">
+      <dxo-size [height]="302"> </dxo-size>
+      <dxi-series
+        argumentField="day"
+        valueField="oranges"
+        name="My oranges"
+        type="bar"
+        color="#FF5720">
+      </dxi-series>
+      <dxo-legend [visible]=false></dxo-legend>
+    </dx-chart>
   </div>
 </div>

@@ -1,6 +1,8 @@
 <ng-container *ngIf="isAuthenticated(); else unauthenticated">
   <app-side-nav-outer-toolbar title="{{appInfo.title}}">
-    <router-outlet></router-outlet>
+    <div class="router-outlet">
+      <router-outlet></router-outlet>
+   </div>
     <app-footer>
       Copyright © {{appInfo.currentYear}} {{appInfo.title}}.
       <br/>

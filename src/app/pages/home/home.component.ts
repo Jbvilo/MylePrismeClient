@@ -8,6 +8,7 @@ import { DemandesService } from 'src/app/shared/services/demandes.service';
 
 export class HomeComponent implements OnInit {
   nbrDemande!: number;
+  types: string[] = ['line', 'stackedline', 'fullstackedline'];
   datasource = [{
     day: 'Lundi',
     oranges: 3,
@@ -31,16 +32,13 @@ export class HomeComponent implements OnInit {
     oranges: 4,
   }]
 
-
-  
- energySources = [
+  energySources = [
   { value: 'hydro', name: 'Hydro-electric' },
   { value: 'oil', name: 'Oil' },
   { value: 'gas', name: 'Natural gas' },
   { value: 'coal', name: 'Coal' },
   { value: 'nuclear', name: 'Nuclear' },
 ];
-types: string[] = ['line', 'stackedline', 'fullstackedline'];
 
  countriesInfo = [{
   country: 'Lundi',

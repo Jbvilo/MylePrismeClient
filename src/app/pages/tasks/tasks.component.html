@@ -1,170 +1,29 @@
-
-
-<div style="display:flex;justify-content:space-between">
-  <h2 style="margin:1vw;color:#53535b;font-weight: 700;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Demandes &nbsp; <span *ngIf="dataSource">{{total}} </span> </h2>
-<!---->
-
-
-  <div style="width:14%;margin:10px"> 
-    <dx-text-box placeholder="🔍 Recherche..."      valueChangeEvent="keyup"  stylingMode="outlined"
-    (onValueChanged)="filterdatagrid($event)" >
-   </dx-text-box>
-  </div>
+<!--HEADLINE-->
+<div class="headline" *ngIf="dataSource">
+  <h2 class="grey-title"> Demandes en cours &nbsp; <span *ngIf="dataSource">{{total}} </span> </h2> 
+  <dx-text-box 
+    placeholder="🔍 Recherche..." 
+    valueChangeEvent="keyup"  
+    stylingMode="outlined"
+    (onValueChanged)="filterdatagrid($event)"
+    style="width:153px;">
+  </dx-text-box>
 </div>
-<div *ngIf="dataSource">
-  <dx-data-grid (onRowClick)="openInfo($event)" class="dx-card wide-card" style="margin-left:10px;margin-right:10px" [dataSource]="dataSource"
-    [columns]="columns" id="datagrid"   [hoverStateEnabled]="true" 
-  >
-    #datagrid>
-    <dxo-search-panel
-    [visible]="false"
-    [width]="240"
-    placeholder="Recherche..."
-    [text]="searchText"
-  ></dxo-search-panel>
-  
+
+<!--DATAGRID-->
+<div class="data-grid with-margin-top" *ngIf="dataSource">
+  <dx-data-grid 
+    (onRowClick)="openInfo($event)" 
+    class="dx-card wide-card" 
+    [dataSource]="dataSource"
+    [columns]="columns" 
+    id="datagrid"   
+    [hoverStateEnabled]="true">
+    <dxo-search-panel [visible]="false" [text]="searchText"></dxo-search-panel>
   </dx-data-grid>
 </div>
 
-<dx-popup [width]="popup.width" [height]="popup.height" [showTitle]="true" titleTemplate="title" [dragEnabled]="false"
-  [closeOnOutsideClick]="true" [showCloseButton]="true" [(visible)]="popupVisible">
-  <div *dxTemplate="let data of 'title'">
-    <div style="margin-top:1vw;margin-bottom: 1vw;display: flex;justify-content: space-between;">
-      <div style="font-size: 150%;display: inline-block;"> Demande n° {{popupTitle}}</div>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <div *ngIf="!traitee" style="color:red;font-size:110%;display: inline-block;font-weight: 500;" class="etat"
-        (click)="validate()"> {{demandeInfos.ETAT}}</div>
-      <div *ngIf="traitee" style="color:green;font-size:110%;display: inline-block;font-weight: 500;"> TRAITEE </div>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <i class="dx-icon-edit"  style="font-size:25px;color:black;cursor: pointer;" ></i>
-      <i class="dx-icon-save"  style="font-size:25px;color:black;cursor: pointer;" ></i>
-      <i class="dx-icon-email"  style="font-size:25px;color:black;cursor: pointer;" ></i>
-      <i class="dx-icon-xlsfile" style="font-size:25px;color:green;cursor: pointer;" (click)="savefile()"></i>
-   
-      
-      <label for="inputTag" id="labelinput">
-        <i class="dx-icon-photo"  style="font-size:25px;color:#FF5722;cursor: pointer;" ></i>
-      <input id="inputTag" type="file" text="oo" accept="image/*;capture=camera">
-     
-      </label>
-      <!-- <input type="file" accept="image/*" capture="capture">
-      <input type="file" accept="image/*" capture="camera"> -->
-
-      <div style="font-size:130%;display: inline-block;"> {{demandeInfos.DATE_ARRIVEE}}</div>
-      <div style="display: inline-block;" class="close" (click)="closepopup()">
-        <i class="dx-icon-remove" style="font-size:150%"></i>
-      </div>
-    </div>
-  </div>
-
-  <dx-scroll-view width="100%" height="100%">
-    <div *ngIf="demandeInfos">
-      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> IDENTITE</span> <br>
-      <div class="dx-card" style="padding: 1vw;margin:1vw;">
-    
-        <span style="font-weight: 500;">Nom : </span> {{demandeInfos.NOM}} <br>
-        <span style="font-weight: 500;">Prénom : </span> {{demandeInfos.PRENOM}} <br>
-        <span style="font-weight: 500;">Date de naissance : </span> {{demandeInfos.DATE_DE_NAISSANCE}} <br><br>
-      </div>
-      <br>
-
-      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> COORDONNEES</span> <br>
-      <div class="dx-card" style="padding: 1vw;margin:1vw">      
-        <span style="font-weight: 500;">Téléphone : </span> {{demandeInfos.TELEPHONE}} <br>
-        <span style="font-weight: 500;">Email : </span> {{demandeInfos.EMAIL}} <br>
-        <span style="font-weight: 500;">Adresse : </span> {{demandeInfos.ADRESSE}} <br><br>
-      </div>
-
-      <br>
-      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> FOYER</span> <br>
-      <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-weight: 500;">Habite dans logement à rénover : </span>
-        {{demandeInfos.HABITE_DANS_LOGEMENT}}<br>
-        <span style="font-weight: 500;">Habite seul : </span> {{demandeInfos.HABITE_SEUL}} <br>
-        <span style="font-weight: 500;">Avec conjoint : </span> {{demandeInfos.AVEC_CONJOINT}} <br>
-        <span style="font-weight: 500;">Adultes à charge : </span> {{demandeInfos.ADULTES_A_CHARGE}}
-        <br>
-        <span style="font-weight: 500;">Mineurs à charge : </span> {{demandeInfos.MINEURS_A_CHARGE}}
-        <br>
-        <span style="font-weight: 500;">Status : </span> {{demandeInfos.STATUS}}
-      </div>
-
-      <br>
-      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> SITUATION FISCAL</span> <br>
-      <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-weight: 500;">Revenu fiscal : </span> {{demandeInfos.REVENU_FISCAL}}<br>
-        <span style="font-weight: 500;">Nombre de part : </span> {{demandeInfos.PART}}<br>
-
-      </div>
-      <br>
-      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> REVENUS</span> <br>
-      <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-weight: 500;">Salaire : </span> {{demandeInfos.SALAIRE}}<br>
-        <span style="font-weight: 500;">Employeur: </span> {{demandeInfos.EMPLOYEUR}}<br>
-        <span style="font-weight: 500;">Chommage: </span> {{demandeInfos.CHOMMAGE}}<br>
-        <span style="font-weight: 500;">Retraite: </span> {{demandeInfos.RETRAITE}}<br>
-        <span style="font-weight: 500;">Organisme retraite: </span> {{demandeInfos.ORGANISME_RETRAITE}}<br>
-        <span style="font-weight: 500;">Retraite complémentaire: </span> {{demandeInfos.RETRAITE_COMPLEMENTAIRE}}<br>
-        <span style="font-weight: 500;">Organisme retraite complémentaire: </span>
-        {{demandeInfos.ORGANISME_RETRAITE_COMPLEMENTAIRE}}<br>
-        <span style="font-weight: 500;">Pension: </span> {{demandeInfos.PENSION}}<br>
-        <span style="font-weight: 500;">Organise pension: </span> {{demandeInfos.ORGANISME_PENSION}}<br>
-        <span style="font-weight: 500;">Aah: </span> {{demandeInfos.ALLOCATION_AAH}}<br>
-        <span style="font-weight: 500;">Autre rémunération: </span> {{demandeInfos.AUTRE_REMUNERATION}}<br>
-        <span style="font-weight: 500;">Nom autre rémuneration: </span> {{demandeInfos.NOM_AUTRE_REMUNERATION}}<br>
-
-      </div>
-      <br>
-      <span style="font-size: 130%;font-weight: 400;margin:1vw;"> PROJET</span> <br>
-      <div class="dx-card" style="padding: 1vw;margin:1vw">
-        <span style="font-weight: 500;">Travaux à faire : </span> {{demandeInfos.TRAVAUX_A_FAIRE}}<br>
-        <span style="font-weight: 500;">Description projet : </span> {{demandeInfos.DESCRIPTION_PROJET}}<br>
-        <span style="font-weight: 500;">Après travaux : </span> {{demandeInfos.APRES_TRAVAUX}}<br>
-        <span style="font-weight: 500;">Aides travaux antérieurs: </span> {{demandeInfos.AIDES_TRAVAUX_ANTERIEURS}}<br>
-        <span style="font-weight: 500;">Organisme d'aide : </span> {{demandeInfos.ORGANISME_AIDE}}<br>
-        <span style="font-weight: 500;">Année aide : </span> {{demandeInfos.ANNEE_AIDE}}<br>
-        <span style="font-weight: 500;">Montant aide : </span> {{demandeInfos.MONTANT_AIDE}}<br>
-        <span style="font-weight: 500;">Commentaire : </span> {{demandeInfos.COMMENTAIRE}}<br>
-
-      </div>
-
-
-
-    </div>
-  </dx-scroll-view>
-</dx-popup>
-<!--  [columns]="['ID','NOM',
-  'PRENOM' ,
-  'DATE_DE_NAISSANCE' ,
-  'TELEPHONE' ,
-  'EMAIL' ,
-  'ADRESSE' ,
-  'HABITE_SEUL' ,
-  'AVEC_CONJOINT' ,
-  'ADULTES_A_CHARGE' ,
-  'MINEURS_A_CHARGE' ,
-  'STATUS' ,
-  'HABITE_DANS_LOGEMENT' ,
-  'REVENU_FISCAL' ,
-  'PART' ,
-  'SALAIRE' ,
-  'EMPLOYEUR' ,
-  'CHOMMAGE' ,
-  'RETRAITE' ,
-  'ORGANISME_RETRAITE' ,
-  'RETRAITE_COMPLEMENTAIRE' ,
-  'ORGANISME_RETRAITE_COMPLEMENTAIRE' ,
-  'PENSION' ,
-  'ORGANISME_PENSION' ,
-  'RSA' ,
-  'ALLOCATION_AAH' ,
-  'AUTRE_REMUNERATION'  ,
-  'NOM_AUTRE_REMUNERATION' ,
-  'TRAVAUX_A_FAIRE' ,
-  'DESCRIPTION_PROJET' ,
-  'APRES_TRAVAUX' ,
-  'AIDES_TRAVAUX_ANTERIEURS' ,
-  'ORGANISME_AIDE' ,
-  'ANNEE_AIDE' ,
-  'MONTANT_AIDE' ,
-  'COMMENTAIRE' ]"-->
+<!--LOADER-->
+<div *ngIf="!dataSource">
+  <app-loader-bis></app-loader-bis>
+</div>

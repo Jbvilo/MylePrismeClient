@@ -1,0 +1,248 @@
+<div *ngIf="demande">
+
+
+    <!--HEADLINE-->
+    <div class="headline">
+        <h2 class="grey-title title-small "> Demande n°{{demande.ID}}</h2>
+        <h2 class="title grey-title"> {{demande.NOM}} {{demande.PRENOM}}</h2>
+        <div class="icons">
+            <span *ngIf="!historique && !modification">
+                <span *ngIf="!loadingForState">
+                    <i class="dx-icon-edit orange-hover" (click)="editInfos()"></i>&nbsp;
+                    <i class="dx-icon-email orange-hover" (click)="openMailSender()"></i>&nbsp;
+                    <label for="inputTag" id="labelinput">
+                        <i class="dx-icon-photo orange-hover"></i>&nbsp;
+                        <input id="inputTag" type="file" text="oo" accept="image/*;capture=camera"
+                            (change)="savepictureSrc($event)">
+                    </label>
+                    <i class="dx-icon-xlsfile orange-hover" style="font-size:18px" (click)="savefile()"></i>&nbsp;
+                    <i class="dx-icon-checklist green-hover" style="font-size:18.5px"
+                        (click)="changeDemandeState()"></i>&nbsp;&nbsp;</span>
+            </span>
+
+            <span *ngIf="!historique && modification && !loadingForState"><i class="dx-icon-save orange-hover"
+                    style="font-size:18px" (click)="saveInfos()"></i>&nbsp;&nbsp;&nbsp;</span>
+
+            <span *ngIf="historique && !loadingForState">
+                <i class="dx-icon-refresh orange-hover" style="font-size:18px" (click)="changeDemandeState()"></i>&nbsp;
+            </span>
+            <span *ngIf="!loadingForState && !modification"><i class="dx-icon-close orange-hover" (click)="return()"></i></span>
+            <span *ngIf="!loadingForState && modification"><i class="dx-icon-close orange-hover" (click)="return_modif()"></i></span>
+
+            <i *ngIf="endState && !historique" class="dx-icon-check" style="color:green"></i>
+            <i *ngIf="endState && historique" class="dx-icon-parentfolder" style="color:orangered"></i>
+
+            <span *ngIf="loadingForState && !endState"><dx-load-indicator id="large-indicator" height="16" width="16"
+                    stroke="2"></dx-load-indicator>&nbsp;&nbsp;
+            </span>
+        </div>
+    </div>
+
+    <!--INFORMATIONS PERSONELLES-->
+    <div class="dx-card first-card">
+        <div class="card-title" >
+            <i class="dx-icon-info" ></i> Informations personelles
+        </div>
+        <div class="infos">
+            <app-infos-text-box 
+                intitule="Date de naissance"
+                [info]="demande.DATE_DE_NAISSANCE" 
+                [modification]="modification">
+            </app-infos-text-box>
+        </div>
+        <div class="infos">
+            <app-infos-text-box 
+                intitule="Téléphone"
+                [info]="demande.TELEPHONE" 
+                [modification]="modification">
+            </app-infos-text-box>
+        </div>
+        <div class="infos">
+            <app-infos-text-box
+                intitule="Email" 
+                [info]="demande.EMAIL" 
+                [modification]="modification">
+            </app-infos-text-box>
+     </div>
+        <div class="infos">
+            <app-infos-text-box
+                intitule="Adresse" 
+                [info]="demande.ADRESSE" 
+                [modification]="modification">
+        </app-infos-text-box>
+        </div>
+    </div>
+
+    <!--FOYER-->
+    <div class="dx-card with-margin-top">
+        <div class="card-title">
+            <i class="dx-icon-home"></i> Foyer
+        </div>
+        <div class="infos"> Habite dans le logement à rénover : {{demande.HABITE_DANS_LOGEMENT}}</div>
+        <div class="infos"> Habite tout seul : {{demande.HABITE_SEUL}} </div>
+        <div class="infos"> Avec conjoint : {{demande.AVEC_CONJOINT}} </div>
+        <div class="infos"> Adultes à charges : {{demande.ADULTES_A_CHARGE}} </div>
+        <div class="infos"> Mineurs à charges : {{demande.MINEURS_A_CHARGE}} </div>
+        <div class="infos"> Statut : {{demande.STATUS}} </div>
+    </div>
+
+
+    <!--SITUATION FISCALE-->
+    <div class="dx-card with-margin-top">
+        <div class="card-title">
+            <i class="dx-icon-codeblock"></i> Situtation fiscale
+        </div>
+        <div class="infos"> Revenu fiscal : {{demande.REVENU_FISCAL}}</div>
+        <div class="infos"> Nombre de part : {{demande.PART}} </div>
+    </div>
+
+    <!--REVENUS-->
+    <div class="dx-card with-margin-top">
+        <div class="card-title">
+            <i class="dx-icon-money"></i> Revenus
+        </div>
+        <div class="infos"> Salaire : {{demande.SALAIRE}}</div>
+        <div class="infos">
+            <app-infos-text-box
+                intitule="Employeur" 
+                [info]="demande.EMPLOYEUR" 
+                [modification]="modification">
+            </app-infos-text-box>
+        </div>
+        <div class="infos"> Chommage : {{demande.CHOMMAGE}} </div>
+        <div class="infos"> Retraite : {{demande.RETRAITE}}</div>
+        <div class="infos">
+            <app-infos-text-box
+            intitule="Organisme de retraite" 
+            [info]="demande.ORGANISME_RETRAITE" 
+            [modification]="modification">
+        </app-infos-text-box>
+        </div>
+        <div class="infos"> Retraite complémentaire : {{demande.RETRAITE_COMPLEMENTAIRE}}</div>
+        <div class="infos">
+            <app-infos-text-box
+            intitule="Organisme de retraite complémentaire" 
+            [info]="demande.ORGANISME_RETRAITE_COMPLEMENTAIRE" 
+            [modification]="modification">
+        </app-infos-text-box>
+        </div>
+        <div class="infos"> Pension : {{demande.PENSION}}</div>
+        <div class="infos">
+            <app-infos-text-box
+                intitule="Organisme de pension" 
+                [info]="demande.ORGANISME_PENSION" 
+                [modification]="modification">
+            </app-infos-text-box>
+        </div>
+        <div class="infos"> Aah : {{demande.ALLOCATION_AAH}}</div>
+        <div class="infos"> Autre rémuneration : {{demande.AUTRE_REMUNERATION}} </div>
+        <div class="infos">
+            <app-infos-text-box
+            intitule="Nom de l'autre rémunération " 
+            [info]="demande.NOM_AUTRE_REMUNERATION" 
+            [modification]="modification">
+        </app-infos-text-box>
+        </div>
+    </div>
+
+    <!--PROJET-->
+    <div class="dx-card with-margin-top">
+        <div class="card-title">
+            <i class="dx-icon-tips"></i> Projet
+        </div>
+        <div class="infos"> Travaux à faire : {{demande.TRAVAUX_A_FAIRE}} </div>
+        <div class="infos">
+            <app-infos-text-box
+            intitule="Description projet " 
+            [info]="demande.DESCRIPTION_PROJET" 
+            [modification]="modification">
+        </app-infos-text-box>
+        </div>
+        <div class="infos"> Après travaux : {{demande.APRES_TRAVAUX}}</div>
+        <div class="infos"> Aides pour des travaux antérieurs : {{demande.AIDES_TRAVAUX_ANTERIEURS}}</div>
+        <div class="infos">
+            <app-infos-text-box
+            intitule="Organisme d'aides" 
+            [info]="demande.ORGANISME_AIDE" 
+            [modification]="modification">
+        </app-infos-text-box>
+             </div>
+        <div class="infos">
+            <app-infos-text-box
+            intitule="Années d'aides" 
+            [info]="demande.ANNEE_AIDE" 
+            [modification]="modification">
+        </app-infos-text-box> </div>
+        <div class="infos"> 
+            <app-infos-text-box
+            intitule="Montant des aides reçues" 
+            [info]="demande.MONTANT_AIDE" 
+            [modification]="modification">
+        </app-infos-text-box> </div>
+        <div class="infos"> 
+            <app-infos-text-box
+            intitule="Commentaire" 
+            [info]="demande.COMMENTAIRE" 
+            [modification]="modification">
+        </app-infos-text-box>
+        </div>
+    </div>
+
+    <!--PHOTOS-->
+    <div class="dx-card with-margin-top" *ngIf="demande && imagesSrc[0] != '' ">
+        <div class="card-title">
+            <i class="dx-icon-photo"></i> Photos
+        </div>
+        <br>
+        <div class="pictures" *ngFor="let src of imagesSrc; index as i; first as isFirst">
+            <img src={{src}} class="pic" />
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!demande">
+    <app-loader-bis></app-loader-bis>
+</div>
+
+
+
+
+
+
+<dx-popup
+[width]="700"
+[height]="390"
+[showTitle]="true"
+title="Envoyer un email"
+[dragEnabled]="false"
+[closeOnOutsideClick]="true"
+[showCloseButton]="true"
+[(visible)]="popupVisible"
+>
+<div>Destinataire : {{demande.EMAIL}} </div>
+<br>
+<div style="display:inline-block"> Objet de l'email: &nbsp; </div>
+<dx-text-box 
+valueChangeEvent="keyup"
+ stylingMode="outlined" 
+ height="40px"
+ width="200px"
+ placeholder=" "
+ class="text-box-input"
+ style="display:inline-block"
+ label=" ">
+</dx-text-box>
+<br><br>
+<div>Corps de l'email :</div>
+<br>
+<dx-text-area 
+valueChangeEvent="keyup"
+ stylingMode="outlined" 
+ value="Bonjour,"
+ height="140px"
+ placeholder=""
+ width="650px"
+ class="text-box-input"style="display: inline-block;"
+ label=" ">
+</dx-text-area>
+</dx-popup>

@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../src/themes/generated/variables.additional.scss';
+
+.grey-title {
+    color: $base-border-color;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.headline {
+    display: flex;
+    justify-content: space-between;
+}
+.with-margin-top {
+    margin-top:11px;
+}
+.no-margin {
+    margin:0px;
+}
+.first-card {
+    margin-top:-1px;
+}
+.dx-loadindicator-segment-inner {
+    border-width : 0.05em;
+}
+.dx-texteditor.dx-editor-outlined.dx-state-focused {
+    box-shadow: inset 0 0 0 1px $base-accent;
+}
+.dx-texteditor.dx-editor-outlined.dx-state-focused {
+    box-shadow: none;
+}
+

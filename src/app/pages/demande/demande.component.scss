@@ -1,0 +1,81 @@
+@import '../../../themes/generated/variables.additional.scss';
+
+:host {
+    .title {
+        font-size: 180%;
+        margin: auto;
+        width: fit-content;
+        margin-top:-8px;
+    }
+    ::ng-deep dx-load-indicator {
+        margin-left:2px;
+    }
+    .title-small {
+        font-size: 160%;
+    }
+
+    .icons {
+        padding: 0px;
+        padding-top:10px;
+        width: 155px;
+        text-align: end;
+        i {
+            font-size: 20px;
+            cursor: pointer;
+            color: $base-bg;
+        }  
+        .green-hover:hover {
+            color:$base-green;    
+        }  
+        .red-hover:hover {
+            color:$base-red;
+        } 
+        .orange-hover:hover {
+            color:$base-accent;
+        } 
+    }
+
+    #inputTag {
+        display: none;
+    }
+
+    #labelinput {
+        cursor: pointer;
+    }
+
+    .card-title {
+        margin-bottom: 5px;
+        font-size: 125%;
+        color: $base-border-color;
+        font-weight: 500;
+        margin-left: 10px;
+
+        i {
+            color: $base-accent;
+            font-size: 15px;
+        }
+    }
+
+    .infos {
+        margin-left: 29px;
+        margin-top: 2px;
+        display: flex;
+        justify-content: space-between;
+        width: fit-content;
+    }
+
+    .dx-card {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .pictures {
+        display: inline-block;
+        width: fit-content
+    }
+
+    .pic {
+        height: 180px;
+        margin-left: 32px;
+    }
+}

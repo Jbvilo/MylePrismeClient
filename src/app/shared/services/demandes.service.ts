@@ -1,25 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DemandesService {
-  private ApiUrl = 'https://myleprismews.herokuapp.com/alldemandes'; 
 
-  constructor(private http:HttpClient) { }
+export class DemandesService {
+
+  private apiUrl = 'https://myleprismews.herokuapp.com/';
+
+  constructor(private http: HttpClient) { }
 
   getDemandes() {
-    return this.http.get<any[]>(this.ApiUrl)
+    return this.http.get<any[]>(this.apiUrl + "alldemandes")
   }
-  closeDemandeById(id:number) {
-    return this.http.put<any>("https://myleprismews.herokuapp.com/updateDemande/"+id,{});
+
+  closeDemandeById(id: number) {
+    return this.http.put<any>(this.apiUrl + "updateDemande/" + id, {});
   }
-  openDemandeById(id:number) {
-    return this.http.put<any>("https://myleprismews.herokuapp.com/openDemande/"+id,{});
+
+  openDemandeById(id: number) {
+    return this.http.put<any>(this.apiUrl + "openDemande/" + id, {});
   }
-  
+
+  savepictures(file: File, id: string) {
+    const formData = new FormData();
+    formData.append("thumbnail", file, "picture1.png");
+    return this.http.post<any>("http://localhost:3000/upload/", formData, {});
+  }
+
 }

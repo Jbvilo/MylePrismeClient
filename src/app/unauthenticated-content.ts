@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-unauthenticated-content',
   template: `
-    <app-single-card [title]="title" [description]="description">
+    <app-single-card title="My LePrisme" [description]="description">
       <router-outlet></router-outlet>
     </app-single-card>
   `,
