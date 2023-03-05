@@ -4,9 +4,20 @@
     .cards-content {
         display: flex;
         justify-content: space-between;
+        width: 450px;
+        margin:auto;
+        margin-top: -50px;
         .dx-card {
-            width: 25%;
+            width: 50%;
             height: calc(18vh);
+            margin: 0px 20px;
+            cursor:pointer;
+            border-radius: 3px;
+            background-color: #e8e8ed;
+          
+        }
+        .dx-card:hover {
+            box-shadow: 0 0 5px #64646E
         }
         .number {
             text-align: center;
@@ -23,16 +34,31 @@
             height: calc(58vh);
             .card-title{
                 margin-bottom: 10px;
+
             }
         }
     }
 
     .titre {
         text-align: center;
+        font-size: 80px;
     }
 
     .mobiletitle {
         font-size: 60px;
         margin-top: 50%;
+    }
+
+    .card-title {
+        color:$base-accent;
+        font-weight: 600;
+        font-size: 105%;
+        }
+
+        @media screen and (max-width: 600px) {
+            .cards-content {
+                width: 100%;
+                margin-top: 1px;
+            }
     }
 }

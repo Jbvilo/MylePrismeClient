@@ -38,6 +38,9 @@
 width: 70px;
 padding-left: 15px;
 }
+.dx-datagrid-headers {
+    background-color: #e8e8ed !important;
+}
 
 @media screen and (max-width: 600px) {
 .dx-datagrid .dx-row > td {

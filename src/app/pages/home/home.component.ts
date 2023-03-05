@@ -9,6 +9,7 @@ import { DemandesService } from 'src/app/shared/services/demandes.service';
 
 export class HomeComponent implements OnInit {
   nbrDemande!: number;
+  nbrTraite!:number;
   types: string[] = ['line', 'stackedline', 'fullstackedline'];
   datasource = [{
     day: 'Lundi',
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit {
   getNbrDemandes() {
     this.demandeServices.getDemandes().subscribe(res => {
       this.nbrDemande = res.filter(e => e.ETAT == "A TRAITER").length
+      this.nbrTraite = res.filter(e => e.ETAT == "TRAITEE").length
     })
   }
 
