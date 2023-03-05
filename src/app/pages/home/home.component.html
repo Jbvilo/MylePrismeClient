@@ -6,12 +6,12 @@
 
 <!--CARDS-->
 <div class="cards-content">
-  <div class="dx-card">
+  <div class="dx-card" (click)="navigate('tasks')">
       <div class="card-title">Demandes en cours</div>
       <div class="number">{{nbrDemande}}</div>
   </div>
 
-  <div class="dx-card">
+  <div class="dx-card" (click)="navigate('historique')">
     <div class="card-title">Historique</div>
     <div class="number">{{nbrTraite}}</div>
 </div>

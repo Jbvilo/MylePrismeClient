@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ScreenService } from 'src/app/shared/services';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
 
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
   hydro: 3
 }];
 
-  constructor(private demandeServices: DemandesService, private screenService:ScreenService) {
+  constructor(private router:Router,private demandeServices: DemandesService, private screenService:ScreenService) {
     this.getNbrDemandes()
   }
   ngOnInit(): void {}
@@ -84,6 +85,10 @@ export class HomeComponent implements OnInit {
     }
     return 'titre grey-title"';
 
+  }
+
+  navigate(e: any) {
+    this.router.navigate([e]);
   }
 
 
