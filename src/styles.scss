@@ -34,3 +34,14 @@
 .dx-texteditor.dx-editor-outlined.dx-state-focused {
     box-shadow: none;
 }
+.dx-datagrid-content .dx-datagrid-table .dx-row > td:first-child, .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td:first-child {
+width: 70px;
+padding-left: 15px;
+}
+
+@media screen and (max-width: 600px) {
+.dx-datagrid .dx-row > td {
+padding: 14px 5px ;
+
+}
+}

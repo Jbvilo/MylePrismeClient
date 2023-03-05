@@ -29,6 +29,9 @@ export class TasksComponent implements OnInit {
   getDemandes() {
     this.demandesServices.getDemandes().subscribe(res => {
       this.dataSource = res.filter(e => e.ETAT == "A TRAITER").sort((a, b) => b.ID - a.ID);
+      this.dataSource.forEach(e=>{
+       e.ID = (e.ID as number).toString()
+      })
       this.total = this.dataSource.length
     })
   }

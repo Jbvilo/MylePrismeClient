@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
   adaptTitle() {
 
     if (this.screenService.sizes['screen-x-small']) {
-      return 'titre mobiletitle'
+      return 'titre grey-title mobiletitle'
     }
     return 'titre grey-title"';
 
