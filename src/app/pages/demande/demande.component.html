@@ -4,8 +4,6 @@
 </div>
 
 <div *ngIf="demande">
-
-
     <!--HEADLINE-->
     <div class="headline">
         <h2 class="grey-title title-small "> Demande n°{{demande.ID}}</h2>
@@ -20,9 +18,9 @@
                         <input id="inputTag" type="file" text="oo" accept="image/*;capture=camera"
                             (change)="savepictureSrc($event)">
                     </label>
-                    <i class="dx-icon-xlsfile orange-hover" style="font-size:18px" (click)="savefile()"></i>&nbsp;
+                    <i class="dx-icon-xlsfile orange-hover" style="font-size:18px" (click)="savefile()"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="dx-icon-checklist green-hover" style="font-size:18.5px"
-                        (click)="changeDemandeState()"></i>&nbsp;&nbsp;</span>
+                        (click)="changeDemandeState()"></i>&nbsp;</span>
             </span>
 
             <span *ngIf="!historique && modification && !loadingForState"><i class="dx-icon-save orange-hover"
@@ -33,7 +31,7 @@
             </span>
             <span *ngIf="!loadingForState && !modification"><i class="dx-icon-close orange-hover" (click)="return()"></i></span>
             <span *ngIf="!loadingForState && modification"><i class="dx-icon-close orange-hover" (click)="return_modif()"></i></span>
-
+        
             <i *ngIf="endState && !historique" class="dx-icon-check" style="color:green"></i>
             <i *ngIf="endState && historique" class="dx-icon-parentfolder" style="color:orangered"></i>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScreenService } from 'src/app/shared/services';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
 
 @Component({
@@ -63,7 +64,7 @@ export class HomeComponent implements OnInit {
   hydro: 3
 }];
 
-  constructor(private demandeServices: DemandesService) {
+  constructor(private demandeServices: DemandesService, private screenService:ScreenService) {
     this.getNbrDemandes()
   }
   ngOnInit(): void {}
@@ -73,5 +74,15 @@ export class HomeComponent implements OnInit {
       this.nbrDemande = res.filter(e => e.ETAT == "A TRAITER").length
     })
   }
+
+  adaptTitle() {
+
+    if (this.screenService.sizes['screen-x-small']) {
+      return 'mobiletitle'
+    }
+    return '';
+
+  }
+
 
 }

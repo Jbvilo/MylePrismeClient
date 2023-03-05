@@ -14,14 +14,14 @@ export const navigation = [
     icon: 'refresh',
     path: '/historique'
   },
-  {
-    text: 'Planning',
-    icon: 'event',
-    path: '/planning'
-  },
-  {
-    text: 'Messages',
-    icon: 'message',
-    path: '/profile' 
-  }
+  // {
+  //   text: 'Planning',
+  //   icon: 'event',
+  //   path: '/planning'
+  // },
+  // {
+  //   text: 'Messages',
+  //   icon: 'message',
+  //   path: '/profile' 
+  // }
 ];

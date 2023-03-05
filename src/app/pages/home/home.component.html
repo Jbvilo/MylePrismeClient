@@ -1,13 +1,16 @@
 <!--TITRE-->
-<h2 class="grey-title"> Accueil </h2>
+<!-- <h2 class="grey-title"> Accueil </h2>
+ -->
+<br><br><br><br>
+<h1 class="titre grey-title" [ngClass]="adaptTitle()"> My LePrisme</h1>
 
 <!--CARDS-->
 <div class="cards-content">
-  <div class="dx-card">
+  <!-- <div class="dx-card">
       <div class="card-title">Demandes en cours</div>
       <div class="number">{{nbrDemande}}</div>
-  </div>
-  <div class="dx-card">
+  </div> -->
+  <!-- <div class="dx-card">
       <div class="card-title">Rendez-vous du jour</div>
       <div class="number">*</div>
   </div>
@@ -18,13 +21,13 @@
   <div class="dx-card">
       <div class="card-title"> Visiteurs du jour </div>
       <div class="number">*</div>
-  </div>
+  </div> -->
 </div>
 
 <!--GRAPHES-->
-<div class="graphes-content">
+<!-- <div class="graphes-content"> -->
   <!--Courbe-->
-  <div class="dx-card">
+  <!-- <div class="dx-card">
     <div class="card-title"> Demandes / semaine</div>
       <dx-chart [dataSource]="countriesInfo">
           <dxo-common-series-settings
@@ -48,10 +51,10 @@
         <dxo-export [enabled]="false"></dxo-export>
         <dxo-tooltip [enabled]="true"></dxo-tooltip>
       </dx-chart>
-  </div>
+  </div> -->
 
   <!--Histogramme-->
-  <div class="dx-card">
+  <!-- <div class="dx-card">
     <div class="card-title">Visteurs / semaine</div>
     <dx-chart [dataSource]="datasource">
       <dxo-size [height]="302"> </dxo-size>
@@ -65,4 +68,4 @@
       <dxo-legend [visible]=false></dxo-legend>
     </dx-chart>
   </div>
-</div>
+</div> -->

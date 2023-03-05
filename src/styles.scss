@@ -6,6 +6,13 @@
     font-weight: 700;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.grey-title-mobile {
+    color: $base-border-color;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 28px;
+    margin-top: 2px;
+}
 .headline {
     display: flex;
     justify-content: space-between;
@@ -28,4 +35,3 @@
 .dx-texteditor.dx-editor-outlined.dx-state-focused {
     box-shadow: none;
 }
-
