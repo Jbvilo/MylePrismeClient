@@ -1,7 +1,7 @@
 <!--HEADLINE-->
 <div class="headline" *ngIf="dataSource">
   <h2 class="grey-title" *ngIf="!mobileScreen"> Demandes en cours : <span *ngIf="dataSource">{{total}} </span> </h2> 
-  <div class="grey-title-mobile" *ngIf="mobileScreen"> Demandes : <span *ngIf="dataSource">{{total}} </span> </div> 
+  <h2 class="grey-title-mobile" *ngIf="mobileScreen"> Demandes : <span *ngIf="dataSource">{{total}} </span> </h2> 
   <dx-text-box 
     placeholder="🔍 Recherche..." 
     valueChangeEvent="keyup"  
@@ -19,8 +19,10 @@
     [dataSource]="dataSource"
     [columns]="columns" 
     id="datagrid"   
-    [hoverStateEnabled]="true">
+    [hoverStateEnabled]="true"
+    [columnMinWidth]="2">
     <dxo-search-panel [visible]="false" [text]="searchText"></dxo-search-panel>
+  
   </dx-data-grid>
 </div>
 
