@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ScreenService } from 'src/app/shared/services';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
 import { ExcellService } from 'src/app/shared/services/excell.service';
 
@@ -16,9 +17,11 @@ export class DemandeComponent implements OnInit {
   endState: boolean = false;
   modification:boolean = false;
   popupVisible:boolean=false;
+  ismobile:boolean=false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private demandesService: DemandesService, private excelService: ExcellService) {
+  constructor(private screenService:ScreenService,private router: Router, private route: ActivatedRoute, private demandesService: DemandesService, private excelService: ExcellService) {
     this.getInfos()
+   this.ismobile= this.screenService.sizes['screen-x-small']
   }
 
   ngOnInit(): void { }

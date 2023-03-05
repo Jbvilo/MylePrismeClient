@@ -78,4 +78,15 @@
         height: 180px;
         margin-left: 32px;
     }
+
+
+    @media screen and (max-width: 600px) {
+        .grey-title, .title-small {
+            font-size: 16px;
+            padding-top:5px;
+        }
+        .icons {
+            padding-top: 5px;
+        }
+    }
 }
