@@ -11,6 +11,7 @@ import { DemandesService } from 'src/app/shared/services/demandes.service';
 export class HomeComponent implements OnInit {
   nbrDemande!: number;
   nbrTraite!:number;
+  mobile:boolean=false;
   types: string[] = ['line', 'stackedline', 'fullstackedline'];
   datasource = [{
     day: 'Lundi',
@@ -68,6 +69,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private router:Router,private demandeServices: DemandesService, private screenService:ScreenService) {
     this.getNbrDemandes()
+    this.mobile = this.screenService.sizes['screen-x-small'];
   }
   ngOnInit(): void {}
 

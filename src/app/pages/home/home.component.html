@@ -7,7 +7,7 @@
 <!--CARDS-->
 <div class="cards-content">
   <div class="dx-card" (click)="navigate('tasks')">
-      <div class="card-title">Demandes en cours</div>
+      <div class="card-title">Demandes <span *ngIf="!mobile">en cours</span></div>
       <div class="number">{{nbrDemande}}</div>
   </div>
 

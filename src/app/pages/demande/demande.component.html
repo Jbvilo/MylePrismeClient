@@ -16,12 +16,12 @@
             <span *ngIf="!historique && !modification">
                 <span *ngIf="!loadingForState">
                     <i class="dx-icon-edit orange-hover" (click)="editInfos()"></i>&nbsp;
-                    <i class="dx-icon-email orange-hover" (click)="openMailSender()"></i>&nbsp;
+                    <!-- <i class="dx-icon-email orange-hover" (click)="openMailSender()"></i>&nbsp;
                     <label for="inputTag" id="labelinput">
                         <i class="dx-icon-photo orange-hover"></i>&nbsp;
                         <input id="inputTag" type="file" text="oo" accept="image/*;capture=camera"
                             (change)="savepictureSrc($event)">
-                    </label>
+                    </label> -->
                     <i class="dx-icon-xlsfile orange-hover" style="font-size:18px" (click)="savefile()"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="dx-icon-checklist green-hover" style="font-size:18.5px"
                         (click)="changeDemandeState()"></i>&nbsp;</span>
@@ -196,7 +196,7 @@
     </div>
 
     <!--PHOTOS-->
-    <div class="dx-card with-margin-top" *ngIf="demande && imagesSrc[0] != '' ">
+    <!-- <div class="dx-card with-margin-top" *ngIf="demande && imagesSrc[0] != '' ">
         <div class="card-title">
             <i class="dx-icon-photo"></i> Photos
         </div>
@@ -204,7 +204,7 @@
         <div class="pictures" *ngFor="let src of imagesSrc; index as i; first as isFirst">
             <img src={{src}} class="pic" />
         </div>
-    </div>
+    </div> -->
 </div>
 
 
