@@ -27,6 +27,7 @@ export class SideNavOuterToolbarComponent implements OnInit {
   menuRevealMode = 'expand';
   minMenuSize = 0;
   shaderEnabled = false;
+  headerVisible!: boolean;
 
   constructor(private screen: ScreenService, private router: Router) {
     setTimeout(() => {
@@ -36,7 +37,11 @@ export class SideNavOuterToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.menuOpened = true;
-
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+    this.headerVisible=false
+    } else {
+      this.headerVisible=true
+    }
 
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
