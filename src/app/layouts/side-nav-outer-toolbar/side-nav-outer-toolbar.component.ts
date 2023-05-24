@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, Input, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, NgModule, Input, ViewChild, AfterViewInit, AfterContentChecked } from '@angular/core';
 import { SideNavigationMenuModule, HeaderModule } from '../../shared/components';
 import { ScreenService } from '../../shared/services';
 import { ItemClickEvent } from 'devextreme/ui/tree_view';
@@ -13,7 +13,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './side-nav-outer-toolbar.component.html',
   styleUrls: ['./side-nav-outer-toolbar.component.scss']
 })
-export class SideNavOuterToolbarComponent implements OnInit , AfterViewInit{
+export class SideNavOuterToolbarComponent implements OnInit , AfterContentChecked{
   @ViewChild(DxScrollViewComponent, { static: true }) scrollView!: DxScrollViewComponent;
   selectedRoute = '';
 
@@ -34,13 +34,14 @@ export class SideNavOuterToolbarComponent implements OnInit , AfterViewInit{
       this.selectedRoute = this.router.url
     }, 100);
    }
-  ngAfterViewInit(): void {
+  ngAfterContentChecked(): void {
     if (window.matchMedia('(display-mode: standalone)').matches) {
       this.headerVisible=false
       } else {
         this.headerVisible=true
       }
   }
+
 
   ngOnInit() {
     this.menuOpened = true;
