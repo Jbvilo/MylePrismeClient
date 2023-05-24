@@ -43,8 +43,8 @@ jobs:
           CI: true
           SITE_URL: ${{ steps.project.outputs.site-url }}
         run: |
-          npm ci --force
-          npm run build --force
+          npm ci
+          npm run build
 
       - name: Deploy to IONOS
         if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
