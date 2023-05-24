@@ -17,8 +17,8 @@ export class SideNavOuterToolbarComponent implements OnInit {
   @ViewChild(DxScrollViewComponent, { static: true }) scrollView!: DxScrollViewComponent;
   selectedRoute = '';
 
-  menuOpened!: boolean
-  temporaryMenuOpened = false;
+  menuOpened: boolean = true
+  temporaryMenuOpened = true;
 
   @Input()
   title!: string;
@@ -35,7 +35,7 @@ export class SideNavOuterToolbarComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.menuOpened = false;
+    this.menuOpened = true;
 
 
     this.router.events.subscribe(val => {
@@ -53,14 +53,14 @@ export class SideNavOuterToolbarComponent implements OnInit {
     const isXSmall = this.screen.sizes['screen-x-small'];
     const isLarge = this.screen.sizes['screen-large'];
 
-    this.menuMode = isLarge ? 'shrink' : 'overlap';
+    this.menuMode = isLarge ? 'shrink' : 'shrink';
     this.menuRevealMode = isXSmall ? 'slide' : 'expand';
     this.minMenuSize = isXSmall ? 0 : 60;
-    this.shaderEnabled = !isLarge;
+    this.shaderEnabled = false;
   }
 
   get hideMenuAfterNavigation() {
-    return this.menuMode === 'overlap' || this.temporaryMenuOpened;
+    return false; //this.menuMode === 'overlap' || this.temporaryMenuOpened;
   }
 
   get showMenuAfterClick() {
@@ -80,8 +80,8 @@ export class SideNavOuterToolbarComponent implements OnInit {
       }
 
       if (this.hideMenuAfterNavigation) {
-        this.temporaryMenuOpened = false;
-        this.menuOpened = false;
+        this.temporaryMenuOpened = true;
+        this.menuOpened = true;
         pointerEvent?.stopPropagation();
       }
     } else {
