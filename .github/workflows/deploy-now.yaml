@@ -44,7 +44,7 @@ jobs:
           SITE_URL: ${{ steps.project.outputs.site-url }}
         run: |
           npm ci
-          npm run build
+          npm run build --force
 
       - name: Deploy to IONOS
         if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
