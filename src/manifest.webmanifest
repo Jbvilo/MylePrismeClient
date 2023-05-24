@@ -1,7 +1,7 @@
 {
   "name": "MyLePrisme",
   "short_name": "MyLP",
-  "theme_color": "#e85a2e",
+  "theme_color": "#c6c6ca",
   "background_color": "white",
   "display": "standalone",
   "scope": "./",

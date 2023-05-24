@@ -13,7 +13,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './side-nav-outer-toolbar.component.html',
   styleUrls: ['./side-nav-outer-toolbar.component.scss']
 })
-export class SideNavOuterToolbarComponent implements OnInit {
+export class SideNavOuterToolbarComponent implements OnInit , AfterViewInit{
   @ViewChild(DxScrollViewComponent, { static: true }) scrollView!: DxScrollViewComponent;
   selectedRoute = '';
 
@@ -34,14 +34,17 @@ export class SideNavOuterToolbarComponent implements OnInit {
       this.selectedRoute = this.router.url
     }, 100);
    }
+  ngAfterViewInit(): void {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.headerVisible=false
+      } else {
+        this.headerVisible=true
+      }
+  }
 
   ngOnInit() {
     this.menuOpened = true;
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-    this.headerVisible=false
-    } else {
-      this.headerVisible=true
-    }
+
 
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
