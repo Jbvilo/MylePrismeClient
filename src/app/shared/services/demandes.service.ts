@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class DemandesService {
 
-  private apiUrl = 'https://myleprismews.herokuapp.com/';
+  private apiUrl = 'https://myleprisme-ws-c4b7e0e65060.herokuapp.com/';
 
   constructor(private http: HttpClient) { }
 
