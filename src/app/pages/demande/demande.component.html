@@ -15,26 +15,26 @@
         <div class="icons">
             <span *ngIf="!historique && !modification">
                 <span *ngIf="!loadingForState">
-                    <i class="dx-icon-edit orange-hover" (click)="editInfos()"></i>&nbsp;
+                    <i class="dx-icon-edit orange-hover"  style="font-size:20px"  (click)="editInfos()"></i>&nbsp;
                     <!-- <i class="dx-icon-email orange-hover" (click)="openMailSender()"></i>&nbsp;
                     <label for="inputTag" id="labelinput">
                         <i class="dx-icon-photo orange-hover"></i>&nbsp;
                         <input id="inputTag" type="file" text="oo" accept="image/*;capture=camera"
                             (change)="savepictureSrc($event)">
                     </label> -->
-                    <i class="dx-icon-xlsfile orange-hover" style="font-size:18px" (click)="savefile()"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="dx-icon-checklist green-hover" style="font-size:18.5px"
+                    <i class="dx-icon-xlsfile orange-hover" style="font-size:19px" (click)="savefile()"></i>&nbsp;&nbsp;
+                    <i class="dx-icon-checklist green-hover" style="font-size:20px"
                         (click)="changeDemandeState()"></i>&nbsp;</span>
             </span>
 
             <span *ngIf="!historique && modification && !loadingForState"><i class="dx-icon-save orange-hover"
-                    style="font-size:18px" (click)="saveInfos()"></i>&nbsp;&nbsp;&nbsp;</span>
+                    style="font-size:20px" (click)="saveInfos()"></i>&nbsp;&nbsp;&nbsp;</span>
 
             <span *ngIf="historique && !loadingForState">
-                <i class="dx-icon-refresh orange-hover" style="font-size:18px" (click)="changeDemandeState()"></i>&nbsp;
+                <i class="dx-icon-refresh orange-hover" style="font-size:20px" (click)="changeDemandeState()"></i>&nbsp;
             </span>
-            <span *ngIf="!loadingForState && !modification"><i class="dx-icon-close orange-hover" (click)="return()"></i></span>
-            <span *ngIf="!loadingForState && modification"><i class="dx-icon-close orange-hover" (click)="return_modif()"></i></span>
+            <span *ngIf="!loadingForState && !modification"><i class="dx-icon-close orange-hover"  style="font-size:20px" (click)="return()"></i></span>
+            <span *ngIf="!loadingForState && modification"><i class="dx-icon-return orange-hover"  style="font-size:20px" (click)="return_modif()"></i></span>
         
             <i *ngIf="endState && !historique" class="dx-icon-check" style="color:green"></i>
             <i *ngIf="endState && historique" class="dx-icon-parentfolder" style="color:orangered"></i>
@@ -54,7 +54,8 @@
             <app-infos-text-box 
                 intitule="Date de naissance"
                 [info]="demande.DATE_DE_NAISSANCE" 
-                [modification]="modification">
+                [modification]="modification"
+                (valueChange)="demande.DATE_DE_NAISSANCE=$event;">
             </app-infos-text-box>
         </div>
         <div class="infos">

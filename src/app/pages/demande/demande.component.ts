@@ -18,6 +18,7 @@ export class DemandeComponent implements OnInit {
   modification:boolean = false;
   popupVisible:boolean=false;
   ismobile:boolean=false;
+  savedDemande: any;
 
   constructor(private screenService:ScreenService,private router: Router, private route: ActivatedRoute, private demandesService: DemandesService, private excelService: ExcellService) {
     this.getInfos()
@@ -33,16 +34,19 @@ export class DemandeComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.demandesService.getDemandes().subscribe(demandes => {
         this.demande = demandes.filter(element => element.ID == params['id'])[0]
+        this.savedDemande = JSON.parse(JSON.stringify(this.demande));
         this.isHistorique()
       })
     })
   }
   saveInfos(){
     this.loadingForState = true;
-    setTimeout(() => {
-      this.loadingForState=false;
-      this.modification=false;
-    }, 3000);
+    this.demandesService.updateDemande(this.demande).subscribe((res)=>{
+      if(res){
+        this.loadingForState=false;
+        this.modification=false;
+      }
+    })
   }
   savefile() {
     this.excelService.savefile(this.demande)
@@ -99,5 +103,6 @@ export class DemandeComponent implements OnInit {
   }
   return_modif(){
     this.modification=false;
+    this.demande = JSON.parse(JSON.stringify(this.savedDemande))
   }
 }

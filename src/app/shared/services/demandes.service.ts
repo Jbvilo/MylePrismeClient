@@ -28,5 +28,8 @@ export class DemandesService {
     formData.append("thumbnail", file, "picture1.png");
     return this.http.post<any>("http://localhost:3000/upload/", formData, {});
   }
+  updateDemande(demande:any){
+    return this.http.put(this.apiUrl+ "updateDemande/" + demande,{});
+  }
 
 }

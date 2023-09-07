@@ -4,8 +4,9 @@
 <div class="text-box">
     <br>
     <dx-text-box 
-    [value]="info" 
+    [(value)]="info" 
     valueChangeEvent="keyup"
+    (onValueChanged)="valueChange.emit($event.value)"
      stylingMode="outlined" 
      height="15px;"
      width="900px"

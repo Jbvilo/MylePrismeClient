@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-infos-text-box',
@@ -9,6 +9,7 @@ export class InfosTextBoxComponent implements OnInit {
   @Input() info!: any;
   @Input() intitule!: string;
   @Input() modification!: boolean;
+  @Output() valueChange = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
