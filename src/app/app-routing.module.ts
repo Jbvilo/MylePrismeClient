@@ -37,7 +37,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'planning',
+    path: 'statistiques',
     component: PlanningComponent,
     canActivate: [AuthGuardService]
   },

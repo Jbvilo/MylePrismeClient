@@ -14,11 +14,11 @@ export const navigation = [
     icon: 'refresh',
     path: '/historique'
   },
-  // {
-  //   text: 'Planning',
-  //   icon: 'event',
-  //   path: '/planning'
-  // },
+  {
+    text: 'Statistiques',
+    icon: 'chart',
+    path: '/statistiques'
+  },
   // {
   //   text: 'Messages',
   //   icon: 'message',

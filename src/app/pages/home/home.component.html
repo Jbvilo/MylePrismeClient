@@ -3,11 +3,13 @@
  -->
 
 <h1 class="titre grey-title" [ngClass]="adaptTitle()"> My LePrisme</h1>
+<h2 style="font-size: medium;text-align: center;margin-top:-58px;margin-bottom: 20px;">Consulter et administrer les demandes d'accompagnement du Prisme.</h2>
+
 
 <!--CARDS-->
 <div class="cards-content">
   <div class="dx-card" (click)="navigate('tasks')">
-      <div class="card-title">Demandes <span *ngIf="!mobile">en cours</span></div>
+      <div class="card-title">Demandes <span *ngIf="!mobile"></span></div>
       <div class="number">{{nbrDemande}}</div>
   </div>
 

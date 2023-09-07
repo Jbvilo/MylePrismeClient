@@ -1,13 +1,43 @@
-<h2 class="grey-title"> Planning </h2> 
+<h2 class="grey-title" *ngIf="allDemandes" > Statistiques </h2>
 
-<!-- <div class="dx-card">
-  <dx-scheduler
-    timeZone="America/Los_Angeles"
-    [dataSource]="appointmentsData"
-    [views]="['week', 'month']"
-    currentView="week"
-    [currentDate]="currentDate"
-    [startDayHour]="9"
-    [height]="500">
-  </dx-scheduler>
-</div> -->
+
+<h2 style="font-size: medium;" *ngIf="allDemandes" >Demandes / jours </h2>
+
+
+<div *ngIf="!allDemandes">
+  <app-loader></app-loader>
+</div>
+
+<dx-chart 
+  *ngIf="allDemandes" 
+  [dataSource]="stats"
+ >
+  
+
+  <dxo-argument-axis
+  [(visualRange)]="visualRange">
+</dxo-argument-axis>
+
+<dxi-value-axis
+[allowDecimals]="false">
+
+</dxi-value-axis>
+  <dxo-scroll-bar [visible]="scrollbar"></dxo-scroll-bar>
+
+  <dxo-zoom-and-pan argumentAxis="both" valueAxis="none"></dxo-zoom-and-pan>
+    <dxi-series 
+      type="bar"
+      argumentField="date" 
+      valueField="value"
+      color="rgba(255, 91, 31, 0.388)"
+      >
+    </dxi-series>
+    <dxo-legend [visible]="false">
+    </dxo-legend>
+    <dxo-tooltip
+    [enabled]="true"
+    [shared]="true"
+    [customizeTooltip]="customizeTooltip"
+  ></dxo-tooltip>
+
+</dx-chart>

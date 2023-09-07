@@ -1,7 +1,6 @@
 <div class="headline" *ngIf="dataSource">
   <h2 class="grey-title" *ngIf="!mobileScreen"> Historique : <span *ngIf="dataSource" >{{total}} </span></h2>
   <div class="grey-title-mobile" *ngIf="mobileScreen"> Historique : <span *ngIf="dataSource" >{{total}} </span></div>
-
   <dx-text-box 
     placeholder="🔍 Recherche..." 
     valueChangeEvent="keyup"  
@@ -10,6 +9,7 @@
     style="width:153px">
   </dx-text-box>
 </div>
+<h2 style="font-size: medium;" *ngIf="dataSource" > Demandes traitées </h2>
 
 <div *ngIf="dataSource" class="data-grid with-margin-top"> 
   <dx-data-grid 

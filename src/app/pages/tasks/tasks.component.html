@@ -1,6 +1,6 @@
 <!--HEADLINE-->
 <div class="headline" *ngIf="dataSource">
-  <h2 class="grey-title" *ngIf="!mobileScreen"> Demandes en cours : <span *ngIf="dataSource">{{total}} </span> </h2> 
+  <h2 class="grey-title" *ngIf="!mobileScreen"> Demandes : <span *ngIf="dataSource">{{total}} </span> </h2> 
   <h2 class="grey-title-mobile" *ngIf="mobileScreen"> Demandes : <span *ngIf="dataSource">{{total}} </span> </h2> 
   <dx-text-box 
     placeholder="🔍 Recherche..." 
@@ -10,6 +10,8 @@
     style="width:153px;">
   </dx-text-box>
 </div>
+<h2 style="font-size: medium;" *ngIf="dataSource" > En attente de traitement</h2>
+
 
 <!--DATAGRID-->
 <div class="data-grid with-margin-top" *ngIf="dataSource">
