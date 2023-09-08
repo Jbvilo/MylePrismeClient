@@ -62,7 +62,8 @@
             <app-infos-text-box 
                 intitule="Téléphone"
                 [info]="demande.TELEPHONE" 
-                [modification]="modification">
+                [modification]="modification"
+                (valueChange)="demande.TELEPHONE=$event;">
             </app-infos-text-box>
         </div>
         <div class="infos">

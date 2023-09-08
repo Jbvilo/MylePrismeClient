@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class DemandesService {
     return this.http.post<any>("http://localhost:3000/upload/", formData, {});
   }
   updateDemande(demande:any){
-    return this.http.put(this.apiUrl+ "updateDemande/" + demande,{});
-  }
+    return this.http.put(this.apiUrl+ "updateDemandeInfos/",{params: new HttpParams().set('b', demande) })
+  };
 
 }
