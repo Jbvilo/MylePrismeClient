@@ -8,7 +8,7 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { DxChartModule, DxLoadIndicatorModule } from 'devextreme-angular';
+import { DxChartModule, DxLoadIndicatorModule, DxSchedulerModule } from 'devextreme-angular';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -32,6 +32,7 @@ import { environment } from '../environments/environment';
     HttpClientModule,
     DxLoadIndicatorModule,
     DxChartModule,
+    DxSchedulerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

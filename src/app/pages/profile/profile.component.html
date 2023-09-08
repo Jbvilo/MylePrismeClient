@@ -1,1 +1,23 @@
-<h2 class="grey-title"> Messages </h2> 
+<h2 class="grey-title" > Planning </h2>
+<h2 style="font-size: medium;"  > Rendez-vous clients </h2>
+
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+<dx-scheduler
+  timeZone="America/Los_Angeles"
+  [dataSource]="appointments"
+  [views]="['month', 'week','day']"
+  currentView="week"
+  [currentDate]="currentDate"
+  [startDayHour]="8"
+  [height]="430"
+  allDayPanelMode='hidden'
+  [showAllDayPanel]="false"
+  (onAppointmentAdded)="updateRdv($event)"
+  (onAppointmentDeleted)="updateRdv($event)"
+  (onAppointmentUpdated)="updateRdv($event)">
+</dx-scheduler>
+
+

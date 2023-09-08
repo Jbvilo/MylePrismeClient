@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DemandesService } from 'src/app/shared/services/demandes.service';
-import { Appointment, SchedulerService } from 'src/app/shared/services/scheduler.service';
+import { SchedulerService } from 'src/app/shared/services/scheduler.service';
 
 @Component({
   selector: 'app-planning',

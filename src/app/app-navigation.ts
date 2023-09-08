@@ -19,9 +19,9 @@ export const navigation = [
     icon: 'chart',
     path: '/statistiques'
   },
-  // {
-  //   text: 'Messages',
-  //   icon: 'message',
-  //   path: '/profile' 
-  // }
+  {
+    text: 'Planning',
+    icon: 'event',
+    path: '/profile' 
+  }
 ];
